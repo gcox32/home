@@ -30,7 +30,10 @@ export default function SignInModal({ isOpen, onClose }: SignInModalProps) {
 
   return (
     <div className="z-[100] fixed inset-0 flex justify-center items-center bg-black/50" onClick={onClose}>
-      <div className="bg-background shadow-lg p-6 rounded-lg w-full max-w-md">
+      <div 
+        className="bg-background shadow-lg p-6 rounded-lg w-full max-w-md" 
+        onClick={(e) => e.stopPropagation()}
+      >
         <h2 className="mb-4 font-bold text-2xl">Sign In</h2>
         
         <form onSubmit={handleSubmit} className="space-y-4">
