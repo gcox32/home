@@ -10,7 +10,7 @@ export default function Footer() {
           href="https://github.com/gcox32"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-gray-600 hover:text-gray-900 dark:hover:text-gray-50 dark:text-gray-400 transition-colors"
+          className="text-foreground/60 hover:text-foreground transition-colors"
           aria-label="GitHub"
         >
           <GithubIcon className="w-6 h-6" />
@@ -20,27 +20,27 @@ export default function Footer() {
           href="https://linkedin.com/in/gcoxexcel"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-gray-600 hover:text-gray-900 dark:hover:text-gray-50 dark:text-gray-400 transition-colors"
+          className="text-foreground/60 hover:text-foreground transition-colors"
           aria-label="LinkedIn"
         >
           <LinkedInIcon className="w-6 h-6" />
         </a>
         
         <a
-          href="https://twitter.com/yourusername"
+          href="https://twitter.com/unspammable"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-gray-600 hover:text-gray-900 dark:hover:text-gray-50 dark:text-gray-400 transition-colors"
+          className="text-foreground/60 hover:text-foreground transition-colors"
           aria-label="Twitter"
         >
           <TwitterIcon className="w-6 h-6" />
         </a>
         
-        <a
-          href="https://instagram.com/yourusername"
+        {/* <a
+          href="https://instagram.com/grantcox14"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-gray-600 hover:text-gray-900 dark:hover:text-gray-50 dark:text-gray-400 transition-colors"
+          className="text-foreground/60 hover:text-foreground transition-colors"
           aria-label="Instagram"
         >
           <InstagramIcon className="w-6 h-6" />
@@ -50,11 +50,11 @@ export default function Footer() {
           href="https://facebook.com/yourusername"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-gray-600 hover:text-gray-900 dark:hover:text-gray-50 dark:text-gray-400 transition-colors"
+          className="text-foreground/60 hover:text-foreground transition-colors"
           aria-label="Facebook"
         >
           <FacebookIcon className="w-6 h-6" />
-        </a>
+        </a> */}
       </div>
     </footer>
   );
