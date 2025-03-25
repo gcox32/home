@@ -8,7 +8,7 @@ export default function Portfolio() {
       description="A collection of my professional work and experiences"
     >
       <div className="space-y-8 w-full">
-        <div className="flex justify-between items-center">
+        <div className="flex justify-between items-center w-full">
           <h2 className="font-semibold text-2xl">Professional Experience</h2>
           <Link 
             href="/resume.pdf" 

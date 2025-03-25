@@ -8,8 +8,8 @@ export default function Contact() {
     >
       <div className="space-y-6 mx-auto w-full max-w-lg">
         <a
-          href="mailto:your.email@example.com"
-          className="block bg-primary hover:bg-primary/90 px-4 py-3 rounded-lg w-full text-white text-center transition-colors"
+          href="mailto:grant@letmedemo.com"
+          className="block bg-primary hover:bg-primary/90 px-4 py-3 rounded-lg w-full text-primary dark:text-primary-400 text-center transition-colors"
         >
           Send me an email
         </a>

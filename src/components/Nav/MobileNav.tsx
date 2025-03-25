@@ -8,8 +8,9 @@ export default function MobileNav({ isMenuOpen, setIsMenuOpen }: { isMenuOpen: b
           }`}
         >
           <div className="flex flex-col gap-4 p-4">
-            {navLinks.map((link) => (
+            {navLinks.map((link, index) => (
               <Link
+                key={index}
                 href={link.href}
                 className="px-2 py-1.5 hover:text-primary transition-colors"
                 onClick={() => setIsMenuOpen(false)}

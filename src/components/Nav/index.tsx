@@ -34,8 +34,8 @@ export default function Nav() {
             </Link>
 
             <div className="hidden md:flex items-center gap-6">
-              {navLinks.map((link) => (
-                <Link href={link.href} className="hover:text-primary transition-colors">
+              {navLinks.map((link, index) => (
+                <Link key={index} href={link.href} className="hover:bg-black/[.05] dark:hover:bg-white/[.06] px-3 py-1.5 rounded-lg hover:text-primary transition-colors">
                   {link.label}
                 </Link>
               ))}
