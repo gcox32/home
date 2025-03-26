@@ -20,7 +20,7 @@ export default function Nav() {
 
   return (
     <>
-      <nav className="top-0 z-50 fixed bg-transparent px-4 py-3 dark:border-white/[.145] border-b border-black/[.08] w-full">
+      <nav className="top-0 z-50 fixed px-4 py-3 dark:border-white/[.145] border-b border-black/[.08] w-full">
         <div className="flex justify-between items-center mx-auto max-w-7xl">
           <div className="flex items-center gap-6">
             <Link href="/" className="flex items-center">

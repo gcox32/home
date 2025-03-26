@@ -5,6 +5,7 @@
   --foreground: #171717;
   --nav-height: 65px;    /* 3.5rem */
   --footer-height: 89px; /* py-8 (64px) + 1px border + content height */
+  --text-white: color-mix(in oklab, #ededed 80%, transparent);
 }
 
 .dark {
@@ -52,6 +53,10 @@ body::before {
     rgba(0, 112, 243, 0.4) 25%,
     transparent 50%
   );
+}
+
+nav {
+  background: var(--background);
 }
 
 @keyframes pulse {
