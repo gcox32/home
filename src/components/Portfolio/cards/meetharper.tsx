@@ -1,51 +1,56 @@
 import BasePortfolioCard from './BasePortfolioCard';
 
 export default function MeetHarper() {
+
+    const title = 'MeetHarper.com';
+    const description = 'Providing a library of customized content for broadband marketers';
     const technologies = [
-        'React', 'TypeScript', 'Node.js', 'Express', 'PostgreSQL',
-        'AWS', 'Stripe', 'SendGrid', 'Twilio'
+        'TypeScript', 'Vue.js', 'Go', 'MySQL', 'AWS', 'Docker',
     ];
     const foregroundImage = 'https://assets.letmedemo.com/public/home/portfolio/harper-hero.png';
     const backgroundImage = 'https://assets.letmedemo.com/public/home/portfolio/harper-hero-color.png';
-    const foregroundPositionY = '50px';
+    const foregroundPosition = '85% 50%';
+    const backgroundColor = 'rgb(0, 153, 196)';
+    const textColor = 'white';
 
     const renderChildren = () => {
         return (
-            <>
-                <div>
-                    <h4 className="mb-2 font-medium text-white">Key Responsibilities</h4>
-                    <ul className="space-y-1 text-white list-disc list-inside">
-                        <li>Led the development of the client-facing scheduling system</li>
-                        <li>Implemented secure payment processing with Stripe integration</li>
-                        <li>Built automated email and SMS notification system</li>
-                        <li>Optimized database queries and API performance</li>
-                        <li>Maintained and scaled AWS infrastructure</li>
-                    </ul>
-                </div>
-
-                <div>
-                    <h4 className="mb-2 font-medium text-white">Impact</h4>
-                    <ul className="space-y-1 text-white list-disc list-inside">
-                        <li>Reduced scheduling conflicts by 95%</li>
-                        <li>Increased client engagement by 60%</li>
-                        <li>Automated 80% of administrative tasks</li>
-                    </ul>
-                </div>
-            </>
+          <>
+            <div className="w-2/3">
+              <h4 className="mb-2 font-medium text-white">Key Responsibilities</h4>
+              <ul className="space-y-1 text-white list-disc list-inside">
+                <li>Assumed full ownership of a third-party-built platform and rapidly came up to speed on unfamiliar tech (Vue.js and Go)</li>
+                <li>Diagnosed and fixed bugs across the stack while delivering new features to meet evolving client needs</li>
+                <li>Maintained infrastructure and code quality while balancing short-term support with long-term stability</li>
+                <li>Provided direct technical support to clients, often debugging issues live and guiding them through solutions</li>
+              </ul>
+            </div>
+      
+            <div className="w-2/3">
+              <h4 className="mb-2 font-medium text-white">Impact</h4>
+              <ul className="space-y-1 text-white list-disc list-inside">
+                <li>Stabilized a critical platform under active use without needing a full rebuild</li>
+                <li>Improved turnaround time on support issues, reducing average resolution time by more than half</li>
+                <li>Earned trust from both internal stakeholders and clients through technical ownership and clear communication</li>
+              </ul>
+            </div>
+          </>
         )
-    }
+      }
+      
 
     return (
         <BasePortfolioCard
-            title="MeetHarper.com"
-            description="A comprehensive platform for scheduling and managing therapy sessions"
+            title={title}
+            description={description}
             children={renderChildren()}
             technologies={technologies}
             siteUrl={`https://meetharper.com`}
             backgroundImage={backgroundImage}
             foregroundImage={foregroundImage}
-            foregroundPositionY={foregroundPositionY}
-            textColor="white"
+            foregroundPosition={foregroundPosition}
+            backgroundColor={backgroundColor}
+            textColor={textColor}
         />
     );
 }

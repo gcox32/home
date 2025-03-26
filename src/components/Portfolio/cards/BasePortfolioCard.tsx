@@ -10,18 +10,25 @@ interface BasePortfolioCardProps {
     backgroundPosition?: string;
     backgroundColor?: string;
     foregroundImage?: string | null;
-    foregroundPositionY?: string | undefined;
+    foregroundPosition?: string | undefined;
     textColor?: string;
 }
 
-export default function BasePortfolioCard({ title, description, children, technologies, siteUrl, backgroundImage, backgroundPosition = 'right', backgroundColor = undefined, foregroundImage = null, foregroundPositionY = undefined, textColor = 'var(--text-white)' }: BasePortfolioCardProps) {
+export default function BasePortfolioCard({ title, description, children, technologies, siteUrl, backgroundImage, backgroundPosition, backgroundColor = undefined, foregroundImage = null, foregroundPosition, textColor = 'var(--text-white)' }: BasePortfolioCardProps) {
 
     return (
-        <div className="relative space-y-6 p-6 border rounded-lg" style={{ backgroundImage: `url(${backgroundImage})`, backgroundPosition: backgroundPosition, backgroundColor: backgroundColor }}>
+        <div className="relative space-y-6 md:bg-[image:var(--bg-image)] bg-none p-6 border rounded-lg" style={{
+            '--bg-image': `url(${backgroundImage})`,
+            backgroundPosition: backgroundPosition,
+            backgroundColor: backgroundColor
+        } as React.CSSProperties}>
             {foregroundImage && (
-                <div 
-                    className="absolute inset-0 bg-contain bg-no-repeat bg-right pointer-events-none" 
-                    style={{ backgroundImage: `url(${foregroundImage})`, backgroundPositionY: foregroundPositionY }}
+                <div
+                    className="hidden md:block absolute inset-0 md:bg-[image:var(--fg-image)] bg-no-repeat pointer-events-none"
+                    style={{
+                        '--fg-image': `url(${foregroundImage})`,
+                        backgroundPosition: foregroundPosition
+                    } as React.CSSProperties}
                 />
             )}
             <div className="relative">

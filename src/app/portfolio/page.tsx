@@ -15,10 +15,10 @@ export default function Portfolio() {
           <h2 className="font-semibold text-2xl">Professional Experience</h2>
           <Link
             href="/resume.pdf"
-            className="hover:bg-black/[.05] dark:hover:bg-white/[.06] px-3 py-1.5 rounded-lg hover:text-primary transition-colors"
+            className="bg-black/[.05] hover:bg-black/[.25] dark:bg-white/[.06] dark:hover:bg-white/[.3] px-3 py-1.5 rounded-lg hover:text-primary transition-colors"
             target="_blank"
           >
-            View Resume
+            {`Résumé`}
           </Link>
         </div>
         <div className="space-y-6">
