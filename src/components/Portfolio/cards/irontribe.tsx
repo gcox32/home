@@ -37,11 +37,12 @@ export default function IronTribe() {
     <BasePortfolioCard
       title={title}
       description={description}
-      children={renderChildren()}
       technologies={technologies}
       siteUrl={siteUrl}
       backgroundImage={backgroundImage}
       backgroundColor={backgroundColor}
-    />
+    >
+      {renderChildren()}
+    </BasePortfolioCard>
   );
 }

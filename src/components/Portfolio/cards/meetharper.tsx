@@ -43,7 +43,6 @@ export default function MeetHarper() {
         <BasePortfolioCard
             title={title}
             description={description}
-            children={renderChildren()}
             technologies={technologies}
             siteUrl={`https://meetharper.com`}
             backgroundImage={backgroundImage}
@@ -51,6 +50,8 @@ export default function MeetHarper() {
             foregroundPosition={foregroundPosition}
             backgroundColor={backgroundColor}
             textColor={textColor}
-        />
+        >
+            {renderChildren()}
+        </BasePortfolioCard>
     );
 }

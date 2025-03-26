@@ -3,7 +3,7 @@ import VisitButton from './VisitButton';
 interface BasePortfolioCardProps {
     title: string;
     description: string;
-    children: React.ReactNode;
+    children?: React.ReactNode;
     technologies: string[];
     siteUrl: string;
     backgroundImage: string;

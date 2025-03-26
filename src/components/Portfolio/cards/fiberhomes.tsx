@@ -43,12 +43,13 @@ export default function FiberHomes() {
     <BasePortfolioCard
       title={title}
       description={description}
-      children={renderChildren()}
       technologies={technologies}
       siteUrl={`https://fiberhomes.com`}
       backgroundImage={backgroundImage}
       backgroundPosition={backgroundPosition}
       backgroundColor={backgroundColor}
-    />
+    >
+      {renderChildren()}
+    </BasePortfolioCard>
   );
 }
