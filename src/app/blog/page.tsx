@@ -1,4 +1,3 @@
-import PageLayout from '@/components/Layout/PageLayout';
 import Rolodex from '@/components/Blog/Rolodex';
 
 export default function Blog() {

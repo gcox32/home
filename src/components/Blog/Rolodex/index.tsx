@@ -19,27 +19,20 @@ const SCROLL_SENSITIVITY = 3 // Higher is less sensitive
 export default function Rolodex({ entries }: { entries: Entry[] }) {
   const [index, setIndex] = useState(0)
   const [direction, setDirection] = useState(0)
-  const [wheelDelta, setWheelDelta] = useState(0)
   const [wheelRotation, setWheelRotation] = useState(0)
   const [flipCount, setFlipCount] = useState(0)
 
   const paginate = (dir: number) => {
     setDirection(dir)
     setIndex((prev) => (prev + dir + entries.length) % entries.length)
-    setWheelDelta(0)
     setWheelRotation(prev => prev + (dir > 0 ? 1 : -1))
     setFlipCount((c) => c + 1)
   }
 
-  const bind = useWheel(({ delta: [, dy], last }) => {
-    setWheelDelta((prev) => {
-      const newDelta = prev - dy
-      if (Math.abs(newDelta) > SCROLL_SENSITIVITY) {
-        paginate(newDelta > 0 ? 1 : -1)
-        return 0
-      }
-      return newDelta
-    })
+  const bind = useWheel(({ delta: [, dy] }) => {
+    if (Math.abs(dy) > SCROLL_SENSITIVITY) {
+      paginate(dy < 0 ? 1 : -1)
+    }
   })
 
   const handleTabClick = (destination: string) => {
