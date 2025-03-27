@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { useWheel } from '@use-gesture/react'
+import { useWheel, useDrag } from '@use-gesture/react'
 import Wheel from './Wheel'
 import Tab from './Tab'
 import Rings from './Rings'
@@ -29,10 +29,19 @@ export default function Rolodex({ entries }: { entries: Entry[] }) {
     setFlipCount((c) => c + 1)
   }
 
-  const bind = useWheel(({ delta: [, dy] }) => {
+  const bindWheel = useWheel(({ delta: [, dy] }) => {
     if (Math.abs(dy) > SCROLL_SENSITIVITY) {
       paginate(dy < 0 ? 1 : -1)
     }
+  })
+
+  const bindDrag = useDrag(({ movement: [, my], direction: [, dy] }) => {
+    if (Math.abs(my) > 50) { // Threshold for drag distance
+      paginate(dy > 0 ? 1 : -1)
+    }
+  }, {
+    axis: 'y',
+    filterTaps: true,
   })
 
   const handleTabClick = (destination: string) => {
@@ -43,10 +52,12 @@ export default function Rolodex({ entries }: { entries: Entry[] }) {
 
   const currentEntry = entries[index]
   const previousEntry = entries[(index - 1 + entries.length) % entries.length]
+  const nextEntry = entries[(index + 1) % entries.length]
 
   return (
     <div
-      {...bind()}
+      {...bindWheel()}
+      {...bindDrag()}
       className="flex justify-center items-center bg-transparent w-full"
     >
       <div className="relative w-[220px] h-[340px] perspective-[1200px]">
@@ -111,7 +122,7 @@ export default function Rolodex({ entries }: { entries: Entry[] }) {
             position: 'absolute',
           }}
         >
-          <Tab tab={previousEntry.tab} tabSlot={previousEntry.tabSlot} position="bottom" />
+          <Tab tab={nextEntry.tab} tabSlot={nextEntry.tabSlot} position="bottom" />
         </motion.div>
 
       </div>
