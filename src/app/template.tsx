@@ -1,7 +1,7 @@
 'use client'
 
-import Nav from '@/components/Nav';
-import Footer from '@/components/Footer';
+import Nav from '@/components/Layout/Nav';
+import Footer from '@/components/Layout/Footer';
 import { SettingsProvider } from '@/contexts/SettingsContext';
 import { AuthProvider } from '@/contexts/AuthContext';
 

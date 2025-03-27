@@ -11,5 +11,16 @@ export default {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    function ({ addUtilities }: { addUtilities: (utilities: Record<string, any>) => void }) {
+      addUtilities({
+        '.preserve-3d': {
+          'transform-style': 'preserve-3d',
+        },
+        '.transform-style-3d': {
+          'transform-style': 'preserve-3d',
+        },
+      })
+    },
+  ],
 } 

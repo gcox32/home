@@ -1,4 +1,4 @@
-import PageLayout from '@/components/PageLayout';
+import PageLayout from '@/components/Layout/PageLayout';
 import Link from 'next/link';
 import MeetHarper from '@/components/Portfolio/cards/meetharper';
 import FiberHomes from '@/components/Portfolio/cards/fiberhomes';
