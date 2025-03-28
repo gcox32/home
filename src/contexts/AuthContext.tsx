@@ -20,28 +20,33 @@ const TTL_DAYS = 7; // Authentication will last for 7 days
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 function getStoredAuth(): AuthData | null {
-  if (typeof window === 'undefined') return null;
-  
-  const stored = localStorage.getItem(AUTH_STORAGE_KEY);
-  if (!stored) return null;
+  try {
+    const stored = localStorage.getItem(AUTH_STORAGE_KEY);
+    if (!stored) return null;
 
-  const authData: AuthData = JSON.parse(stored);
-  
-  // Check if the stored auth has expired
-  if (authData.expiresAt < Date.now()) {
-    localStorage.removeItem(AUTH_STORAGE_KEY);
+    const authData: AuthData = JSON.parse(stored);
+    
+    // Check if the stored auth has expired
+    if (authData.expiresAt < Date.now()) {
+      localStorage.removeItem(AUTH_STORAGE_KEY);
+      return null;
+    }
+
+    return authData;
+  } catch {
+    // Handle any localStorage errors
     return null;
   }
-
-  return authData;
 }
 
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [user, setUser] = useState<string | null>(null);
+  const [mounted, setMounted] = useState(false);
 
-  // Check localStorage on initial load
+  // Set mounted state after initial render
   useEffect(() => {
+    setMounted(true);
     const storedAuth = getStoredAuth();
     if (storedAuth) {
       setIsAuthenticated(true);
@@ -90,6 +95,11 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       console.error('Sign out error:', error);
     }
   };
+
+  // Only render children after component is mounted
+  if (!mounted) {
+    return null; // or a loading spinner/placeholder
+  }
 
   return (
     <AuthContext.Provider value={{ isAuthenticated, user, signIn, signOut }}>
