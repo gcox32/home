@@ -2,6 +2,7 @@
 
 :root {
   --background: #ffffff;
+  --background-secondary: #f9f9f9;
   --foreground: #171717;
   --nav-height: 65px;    /* 3.5rem */
   --footer-height: 89px; /* py-8 (64px) + 1px border + content height */
@@ -10,11 +11,13 @@
 
 .dark {
   --background: #0a0a0a;
+  --background-secondary: #171717;
   --foreground: #ededed;
 }
 
 @theme inline {
   --color-background: var(--background);
+  --color-background-secondary: var(--background-secondary);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);

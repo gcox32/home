@@ -67,7 +67,7 @@ export default function BlogManagementPage() {
           <h1 className="m-0 font-semibold text-foreground text-3xl">Blog Management</h1>
           <Link 
             href="/blog" 
-            className="hover:bg-black/[.05] dark:hover:bg-white/[.06] px-4 py-2 border border-accent rounded hover:text-white text-sm transition-colors"
+            className="hover:bg-black/[.05] dark:hover:bg-white/[.06] px-4 py-2 border border-accent rounded text-sm transition-colors"
             target="_blank"
           >
             View Public Blog
@@ -75,7 +75,7 @@ export default function BlogManagementPage() {
         </div>
         <Link 
           href="/manage/blog/new"
-          className="flex items-center gap-2 bg-accent hover:bg-black/[.05] dark:hover:bg-white/[.06] px-3 py-1.5 rounded-lg text-white hover:text-primary transition-colors"
+          className="flex items-center gap-2 bg-accent hover:bg-black/[.05] dark:hover:bg-white/[.06] px-3 py-1.5 rounded-lg text-white hover:text-primary dark:text-foreground transition-colors"
         >
           <Plus size={20} />
           New Post

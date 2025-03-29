@@ -229,6 +229,20 @@ export async function getTagByName(name: string): Promise<BlogTag | null> {
   }
 }
 
+export async function listTags(): Promise<BlogTag[]> {
+    const params = {
+      TableName: BLOG_TAG_TABLE
+    };
+  
+    try {
+      const result = await dynamoDB.send(new ScanCommand(params));
+      return (result.Items || []) as BlogTag[];
+    } catch (error) {
+      console.error('Error listing tags:', error);
+      return [];
+    }
+  }  
+
 // Blog Post Tag Operations
 export async function associatePostWithTag(blogPostId: string, blogTagId: string): Promise<BlogPostTag | null> {
   const id = crypto.randomUUID();

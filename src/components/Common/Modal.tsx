@@ -1,5 +1,4 @@
 import { useEffect, useRef } from 'react';
-import './styles.css';
 
 interface ModalProps {
   isOpen: boolean;
@@ -40,13 +39,21 @@ export default function Modal({ isOpen, onClose, title, children }: ModalProps) 
   if (!isOpen) return null;
 
   return (
-    <div className="modal-overlay">
-      <div className="modal-container" ref={modalRef}>
-        <div className="modal-header">
-          <h4>{title}</h4>
-          <button className="modal-close" onClick={onClose}>×</button>
+    <div className="z-50 fixed inset-0 flex justify-center items-center bg-black/50 dark:bg-black/70">
+      <div 
+        ref={modalRef}
+        className="bg-background p-5 rounded-lg w-[90%] max-w-[500px] max-h-[90vh] overflow-y-auto text-foreground"
+      >
+        <div className="flex justify-between items-center mb-5 pb-2.5 dark:border-white/10 border-b border-black/10">
+          <h4 className="font-semibold text-lg">{title}</h4>
+          <button 
+            onClick={onClose}
+            className="hover:opacity-70 text-2xl leading-none transition-opacity cursor-pointer"
+          >
+            ×
+          </button>
         </div>
-        <div className="modal-content">
+        <div className="p-4">
           {children}
         </div>
       </div>

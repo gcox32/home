@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { Trash2 } from 'lucide-react';
 import Modal from '@/components/Common/Modal';
-import styles from './styles.module.css';
 
 interface DeleteButtonProps {
   onDelete: () => Promise<void>;
@@ -28,7 +27,7 @@ export default function DeleteButton({
   return (
     <>
       <button
-        className={`${styles.deleteButton} ${buttonClassName || ''}`}
+        className={`hover:bg-black/[.05] dark:hover:bg-white/[.05] p-2 rounded-full transition-colors text-black/70 dark:text-white/70 hover:text-red-500 dark:hover:text-red-400 ${buttonClassName || ''}`}
         onClick={(e) => {
           e.stopPropagation();
           setIsConfirmOpen(true);
@@ -43,18 +42,18 @@ export default function DeleteButton({
         onClose={() => setIsConfirmOpen(false)}
         title={modalTitle}
       >
-        <div className={styles.confirmDialog}>
-          <p>{confirmationText}</p>
-          <div className={styles.confirmActions}>
+        <div className="flex flex-col gap-6">
+          <p className="text-foreground">{confirmationText}</p>
+          <div className="flex justify-end gap-3">
             <button
               onClick={() => setIsConfirmOpen(false)}
-              className={styles.cancelButton}
+              className="hover:bg-black/[.05] dark:hover:bg-white/[.05] px-4 py-2 rounded-lg transition-colors"
             >
               Cancel
             </button>
             <button
               onClick={handleDelete}
-              className={styles.confirmDeleteButton}
+              className="bg-red-500 hover:bg-red-600 px-4 py-2 rounded-lg text-white transition-colors"
             >
               Delete
             </button>

@@ -2,7 +2,6 @@
 
 import React from "react";
 import dynamic from 'next/dynamic';
-import './styles.css';
 
 interface SnackbarProps {
   message: string;
@@ -11,8 +10,16 @@ interface SnackbarProps {
 }
 
 const SnackbarContent = ({ message, type, visible }: SnackbarProps) => {
+  const baseClasses = "fixed bottom-8 left-8 min-w-[250px] text-center rounded-2xl p-4 text-white transition-all duration-500 z-50";
+  const typeClasses = {
+    success: "bg-green-500",
+    error: "bg-red-500",
+    info: "bg-blue-500"
+  };
+  const visibilityClasses = visible ? "opacity-100" : "opacity-0 invisible";
+
   return (
-    <div className={`snackbar ${type} ${visible ? "show" : "hide"}`}>
+    <div className={`${baseClasses} ${typeClasses[type]} ${visibilityClasses}`}>
       {message}
     </div>
   );
