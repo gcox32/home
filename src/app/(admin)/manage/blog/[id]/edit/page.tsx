@@ -85,10 +85,7 @@ export default function EditBlogPostPage({ params }: { params: Promise<{ id: str
       // Fetch current tags to compare with new tags
       const currentTags = await getPostTags(resolvedParams.id);
       const currentTagNames = new Set(currentTags.map(tag => tag.name));
-      const newTagNames = new Set(formData.tags);
 
-      // Remove tags that are no longer present
-      const tagsToRemove = currentTags.filter(tag => !newTagNames.has(tag.name));
       // Add tags that are new
       const tagsToAdd = formData.tags.filter(tagName => !currentTagNames.has(tagName));
 

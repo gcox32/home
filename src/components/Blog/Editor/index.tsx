@@ -24,7 +24,6 @@ import {
   Undo,
   Redo,
   Link as LinkIcon,
-  Image as ImageIcon,
   Heading1,
   Heading2,
   Code,

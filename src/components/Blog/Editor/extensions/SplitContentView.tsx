@@ -2,6 +2,7 @@ import { NodeViewContent, NodeViewWrapper, NodeViewProps } from '@tiptap/react';
 import { Image as ImageIcon, Loader } from 'lucide-react';
 import './styles.css';
 import { useState } from 'react';
+import Image from 'next/image';
 
 export function SplitContentView({ node, selected, editor }: NodeViewProps) {
   const [isUploading, setIsUploading] = useState(false);
@@ -66,7 +67,14 @@ export function SplitContentView({ node, selected, editor }: NodeViewProps) {
       {hasImage ? (
         <>
           <div className="image-container" onClick={handleImageClick}>
-            <img src={node.attrs.imageUrl} alt="" className="split-content-image" />
+            <Image
+              src={node.attrs.imageUrl}
+              alt=""
+              className="split-content-image"
+              fill
+              sizes="(max-width: 768px) 100vw, 50vw"
+              style={{ objectFit: 'cover' }}
+            />
             <div className="image-overlay">
               <span className="text-white text-sm">Click to replace image</span>
             </div>

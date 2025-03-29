@@ -3,32 +3,26 @@
 import { useEffect, useState } from 'react';
 import Rolodex from '@/components/Blog/Rolodex';
 import Skeleton from '@/components/Common/Skeleton';
-import { BlogPost } from '@/types';
-import { listBlogPosts } from '@/utils/blog';
+import { BlogTag } from '@/types';
+import { listTags } from '@/utils/blog';
 
 export default function Blog() {
-  const [posts, setPosts] = useState<BlogPost[]>([]);
+  const [tags, setTags] = useState<BlogTag[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    async function fetchPosts() {
+    async function fetchTags() {
       try {
-        const publishedPosts = await listBlogPosts('published');
-        
-        // Sort posts by publish date (newest first)
-        const sortedPosts = [...publishedPosts].sort((a, b) =>
-          b.publishDate.localeCompare(a.publishDate)
-        );
-
-        setPosts(sortedPosts);
+        const allTags = await listTags();
+        setTags(allTags);
       } catch (error) {
-        console.error('Error fetching blog posts:', error);
+        console.error('Error fetching tags:', error);
       } finally {
         setLoading(false);
       }
     }
 
-    fetchPosts();
+    fetchTags();
   }, []);
 
   if (loading) {
@@ -39,21 +33,26 @@ export default function Blog() {
     );
   }
 
-  const _ = posts.map((post, index) => ({
-    tab: post.title[0].toUpperCase(),
-    label: post.title,
+  const tagEntries = tags.map((tag, index) => ({
+    tab: tag.name[0].toUpperCase(),
+    label: tag.name,
     tabSlot: index % 5,
-    destination: `/blog/${post.slug}`
+    destination: `/blog/tags/${tag.slug}`
   }));
 
-  const entries = [
+  // Mock entries to fill in if we don't have enough tags
+  const mockEntries = [
     { tab: 'A', label: 'Tumwater', tabSlot: 0, destination: '/blog/tags/01_File' },
     { tab: 'B', label: 'Culpepper', tabSlot: 1, destination: '/blog/tags/Bellingham' },
     { tab: 'C', label: 'Cairns', tabSlot: 2, destination: '/blog/tags/Cicero' },
     { tab: 'D', label: 'Siena', tabSlot: 3, destination: '/blog/tags/Delacroix' },
     { tab: 'E', label: 'Cold Harbor', tabSlot: 4, destination: '/blog/tags/Eternity' },
-  ]
+  ];
 
+  // Combine real tags with mock data if needed
+  const entries = tagEntries.length >= 5 
+    ? tagEntries 
+    : [...tagEntries, ...mockEntries.slice(0, 5 - tagEntries.length)];
 
   return (
     <div className="flex justify-center bg-transparent mx-auto max-w-7xl h-[85vh]">

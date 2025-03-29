@@ -1,5 +1,3 @@
-import styles from './styles.module.css';
-
 interface SkeletonProps {
   variant?: 'list' | 'single';
   count?: number;

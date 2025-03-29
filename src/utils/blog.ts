@@ -43,7 +43,12 @@ export async function getBlogPost(id: string): Promise<BlogPost | null> {
 }
 
 export async function listBlogPosts(status?: 'draft' | 'published' | 'archived'): Promise<BlogPost[]> {
-  const params: any = {
+  const params: {
+    TableName: string;
+    FilterExpression?: string;
+    ExpressionAttributeNames?: { [key: string]: string };
+    ExpressionAttributeValues?: { [key: string]: string };
+  } = {
     TableName: BLOG_POST_TABLE
   };
 
@@ -87,7 +92,7 @@ export async function createBlogPost(post: Omit<BlogPost, 'id'>): Promise<BlogPo
 export async function updateBlogPost(id: string, updates: Partial<BlogPost>): Promise<BlogPost | null> {
   const updateExpressions: string[] = [];
   const expressionAttributeNames: { [key: string]: string } = {};
-  const expressionAttributeValues: { [key: string]: any } = {};
+  const expressionAttributeValues: { [key: string]: string | number | boolean | null } = {};
 
   Object.entries(updates).forEach(([key, value]) => {
     if (key !== 'id') {

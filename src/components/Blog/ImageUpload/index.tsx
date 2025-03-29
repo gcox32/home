@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { ImageIcon, Loader } from 'lucide-react';
 import styles from './styles.module.css';
+import Image from 'next/image';
 
 interface ImageUploadProps {
   value: string;
@@ -97,7 +98,12 @@ export function ImageUpload({
           renderPreview(value)
         ) : value ? (
           <div className={styles.preview}>
-            <img src={value} alt="Preview" />
+            <Image 
+              src={value} 
+              alt="Preview" 
+              fill
+              style={{ objectFit: 'cover' }}
+            />
             <div className={styles.overlay}>
               <span>Click to replace image</span>
             </div>

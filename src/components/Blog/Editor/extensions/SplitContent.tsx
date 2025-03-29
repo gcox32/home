@@ -4,7 +4,7 @@ import { SplitContentView } from './SplitContentView';
 import './styles.css';
 
 export interface SplitContentOptions {
-  HTMLAttributes: Record<string, any>;
+  HTMLAttributes: Record<string, string | number | boolean | null>;
 }
 
 declare module '@tiptap/core' {
@@ -68,13 +68,13 @@ export const SplitContent = Node.create<SplitContentOptions>({
     ];
   },
 
-  renderHTML({ HTMLAttributes, node }) {
+  renderHTML({ HTMLAttributes }) {
     const isImageLeft = HTMLAttributes['data-position'] === 'image-left';
     const imageUrl = HTMLAttributes['data-image-url'];
     const source = HTMLAttributes['data-source'] || '';
     const containerClasses = `split-content ${isImageLeft ? 'image-left' : 'image-right'}`;
 
-    const children: any[] = [];
+    const children: Array<[string, Record<string, string>, ...(string | number | [string, Record<string, string>])[]]> = [];
 
     if (imageUrl) {
       children.push(['div', { 
@@ -127,7 +127,6 @@ export const SplitContent = Node.create<SplitContentOptions>({
           const { state } = editor;
           const { selection } = state;
           const { $to } = selection;
-          const pos = $to.pos;
           const hasNextParagraph = $to.nodeAfter?.type.name === 'paragraph';
 
           // If no paragraph after, insert one

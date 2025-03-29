@@ -54,7 +54,7 @@ export default function TaggedBlogPostsPage({ params }: { params: Promise<{ tag:
       <div className="w-full">
         <header className="mb-12">
           <h1 className="mb-4 font-bold text-foreground text-3xl">
-            Posts tagged with "{resolvedParams.tag}"
+            {`Posts tagged with "${resolvedParams.tag}"`}
           </h1>
         </header>
 

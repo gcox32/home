@@ -14,7 +14,6 @@ export default function NewBlogPostPage() {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [tagInput, setTagInput] = useState('');
-  const [blogId, setBlogId] = useState<string | null>(null);
   const tempBlogId = useMemo(() => crypto.randomUUID(), []);
   const [formData, setFormData] = useState<BlogPostTagFormData>({
     title: '',
@@ -229,7 +228,7 @@ export default function NewBlogPostPage() {
             <Editor
               value={formData.content}
               onChange={handleEditorChange}
-              blogId={blogId || 'temp'}
+              blogId={tempBlogId}
             />
           </div>
         </CollapsibleSection>
