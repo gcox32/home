@@ -50,7 +50,8 @@ function inferInitialState(direction: number, position: 'top' | 'bottom', priori
     }
     return {
         zIndex: -1,
-        rotateX: position === 'bottom' ? 180 : 0
+        rotateX: position === 'bottom' ? 180 : 0,
+        borderBottom: '2px solid #000'
     }
 }
 
@@ -70,7 +71,8 @@ function inferAnimationState(direction: number, position: 'top' | 'bottom', prio
     }
     return {
         zIndex: -1,
-        rotateX: position === 'bottom' ? 180 : 0
+        rotateX: position === 'bottom' ? 180 : 0,
+        borderBottom: '2px solid #000'
     }
 }
 
@@ -107,7 +109,8 @@ export default function Tab({ direction, tab, tabSlot, position, priority }: Tab
             transition={{
                 y: { duration: 0.4, ease: "easeInOut" },
                 opacity: { duration: 0.2 },
-                zIndex: { delay: 0.2 }
+                zIndex: { delay: 0.2 },
+                borderBottom: { duration: 0 }
             }}
             style={getTabStyles(position, priority, leftPercent)}
         >

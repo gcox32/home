@@ -34,7 +34,7 @@ export default function Blog() {
   }
 
   const tagEntries = tags.map((tag, index) => ({
-    tab: tag.name[0].toUpperCase(),
+    tab: index.toString(),
     label: tag.name,
     tabSlot: index % 5,
     destination: `/blog/tags/${tag.slug}`
@@ -42,11 +42,11 @@ export default function Blog() {
 
   // Mock entries to fill in if we don't have enough tags
   const mockEntries = [
-    { tab: 'A', label: 'Tumwater', tabSlot: 0, destination: '/blog/tags/01_File' },
-    { tab: 'B', label: 'Culpepper', tabSlot: 1, destination: '/blog/tags/Bellingham' },
+    { tab: 'A', label: 'Tumwater', tabSlot: 4, destination: '/blog/tags/01_File' },
+    { tab: 'B', label: 'Culpepper', tabSlot: 3, destination: '/blog/tags/Bellingham' },
     { tab: 'C', label: 'Cairns', tabSlot: 2, destination: '/blog/tags/Cicero' },
-    { tab: 'D', label: 'Siena', tabSlot: 3, destination: '/blog/tags/Delacroix' },
-    { tab: 'E', label: 'Cold Harbor', tabSlot: 4, destination: '/blog/tags/Eternity' },
+    { tab: 'D', label: 'Siena', tabSlot: 1, destination: '/blog/tags/Delacroix' },
+    { tab: 'E', label: 'Cold Harbor', tabSlot: 0, destination: '/blog/tags/Eternity' },
   ];
 
   // Combine real tags with mock data if needed
@@ -55,7 +55,7 @@ export default function Blog() {
     : [...tagEntries, ...mockEntries.slice(0, 5 - tagEntries.length)];
 
   return (
-    <div className="flex justify-center bg-transparent mx-auto max-w-7xl h-[85vh]">
+    <div className="flex justify-center bg-transparent mx-auto max-w-7xl h-[75vh] overflow-y-hidden">
       <Rolodex entries={entries} />
     </div>
   );

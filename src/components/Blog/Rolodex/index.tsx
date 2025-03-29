@@ -62,7 +62,7 @@ export default function Rolodex({ entries }: { entries: Entry[] }) {
             {...bindDrag()}
             className="flex justify-center"
         >
-            <div className="relative w-[220px] h-[340px] perspective-[1200px]">
+            <div className="relative blur-[0.75px] w-[220px] h-[340px] perspective-[1200px] filter">
 
                 {/* Top Card (Active) */}
 
