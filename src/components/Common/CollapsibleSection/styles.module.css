@@ -1,0 +1,33 @@
+.section {
+  border: 1px solid var(--border-color);
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.header {
+  width: 100%;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--card-bg);
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  border-radius: 0.5rem;
+}
+
+.header:hover {
+  background: var(--hover-bg);
+}
+
+.title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--heading-color);
+}
+
+.content {
+  padding: 1rem;
+  border-top: 1px solid var(--border-color);
+} 

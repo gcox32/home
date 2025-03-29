@@ -60,7 +60,7 @@ export default function Rolodex({ entries }: { entries: Entry[] }) {
         <div
             {...bindWheel()}
             {...bindDrag()}
-            className="flex justify-center items-center"
+            className="flex justify-center"
         >
             <div className="relative w-[220px] h-[340px] perspective-[1200px]">
 

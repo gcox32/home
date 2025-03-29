@@ -8,6 +8,12 @@ frontend:
       commands:
         - AUTH_USERNAME=${AUTH_USERNAME}
         - AUTH_PASSWORD=${AUTH_PASSWORD}
+        - ADMIN_ACCESS_KEY_ID=${ADMIN_ACCESS_KEY_ID}
+        - ADMIN_SECRET_ACCESS_KEY=${ADMIN_SECRET_ACCESS_KEY}
+        - BLOG_REGION=${BLOG_REGION}
+        - BLOG_POST_TABLE=${BLOG_POST_TABLE}
+        - BLOG_TAG_TABLE=${BLOG_TAG_TABLE}
+        - BLOG_POST_TAG_TABLE=${BLOG_POST_TAG_TABLE}
         - npm run build
   artifacts:
     baseDirectory: .next

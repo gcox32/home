@@ -73,7 +73,6 @@ nav {
 
 .content-height {
   min-height: calc(100vh - var(--nav-height) - var(--footer-height));
-  margin-top: var(--nav-height);
   position: relative;
   z-index: 1;
 }

@@ -1,0 +1,30 @@
+.container {
+  width: 100%;
+}
+
+.label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: var(--text-color);
+}
+
+.sourceInput {
+padding: 0.5rem;
+border: 1px solid var(--border-color);
+border-radius: 0.375rem;
+background: var(--input-bg);
+color: var(--text-color);
+font-size: 0.875rem;
+width: 100%;
+}
+
+.sourceInput::placeholder {
+  color: var(--muted-foreground);
+}
+
+.sourceInput:focus {
+  outline: none;
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 2px var(--accent-color-alpha);
+} 
