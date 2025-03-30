@@ -73,10 +73,10 @@ export default function SubscriberManagementPage() {
     return (
       <div className="mx-auto p-8 max-w-7xl">
         <div className="animate-pulse">
-          <div className="bg-gray-200 dark:bg-gray-700 mb-6 rounded w-1/4 h-8" />
+          <div className="bg-[var(--color-hover-background)] mb-6 rounded w-1/4 h-8" />
           <div className="space-y-4">
             {[1, 2, 3].map((n) => (
-              <div key={n} className="bg-gray-200 dark:bg-gray-700 rounded h-12" />
+              <div key={n} className="bg-[var(--color-hover-background)] rounded h-12" />
             ))}
           </div>
         </div>
@@ -88,38 +88,38 @@ export default function SubscriberManagementPage() {
     <div className="mx-auto p-8 max-w-7xl">
       <div className="flex justify-between items-center mb-6">
         <div>
-          <h1 className="font-bold text-2xl">Manage Subscribers</h1>
-          <p className="text-muted-foreground">
+          <h1 className="font-bold text-[var(--color-foreground)] text-2xl">Manage Subscribers</h1>
+          <p className="text-[var(--color-muted-foreground)]">
             Total Subscribers: {subscribers.length}
           </p>
         </div>
         <button
           onClick={handleExport}
-          className="flex items-center gap-2 bg-accent hover:bg-accent/90 px-4 py-2 rounded-lg text-white transition-colors cursor-pointer"
+          className="flex items-center gap-2 bg-[var(--color-accent)] px-4 py-2 rounded-lg transition-colors text-[var(--color-accent-foreground)] hover:bg-[var(--color-accent-dark)] cursor-pointer"
         >
           <Download size={12} />
           Export
         </button>
       </div>
 
-      <div className="bg-card shadow-sm border rounded-lg overflow-hidden">
+      <div className="bg-[var(--color-background)] shadow-sm border border-[var(--color-border-base)] rounded-lg overflow-hidden">
         <table className="w-full border-collapse">
           <thead>
-            <tr className="bg-muted">
-              <th className="px-6 py-3 font-medium text-muted-foreground text-xs text-left uppercase tracking-wider">Email</th>
-              <th className="px-6 py-3 font-medium text-muted-foreground text-xs text-left uppercase tracking-wider">Subscribed Date</th>
-              <th className="px-6 py-3 font-medium text-muted-foreground text-xs text-left uppercase tracking-wider">Source</th>
-              <th className="px-6 py-3 font-medium text-muted-foreground text-xs text-left uppercase tracking-wider">Actions</th>
+            <tr className="bg-[var(--color-background-secondary)]">
+              <th className="px-6 py-3 font-medium text-[var(--color-muted-foreground)] text-xs text-left uppercase tracking-wider">Email</th>
+              <th className="px-6 py-3 font-medium text-[var(--color-muted-foreground)] text-xs text-left uppercase tracking-wider">Subscribed Date</th>
+              <th className="px-6 py-3 font-medium text-[var(--color-muted-foreground)] text-xs text-left uppercase tracking-wider">Source</th>
+              <th className="px-6 py-3 font-medium text-[var(--color-muted-foreground)] text-xs text-left uppercase tracking-wider">Actions</th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-border">
+          <tbody className="divide-[var(--color-border-base)] divide-y">
             {paginatedSubscribers.map((subscriber) => (
-              <tr key={subscriber.email} className="hover:bg-muted/50">
-                <td className="px-6 py-4">{subscriber.email}</td>
-                <td className="px-6 py-4 text-muted-foreground text-sm">
+              <tr key={subscriber.email} className="hover:bg-[var(--color-hover-background)]">
+                <td className="px-6 py-4 text-[var(--color-foreground)]">{subscriber.email}</td>
+                <td className="px-6 py-4 text-[var(--color-muted-foreground)] text-sm">
                   {new Date(subscriber.subscribedAt).toLocaleDateString()}
                 </td>
-                <td className="px-6 py-4 text-muted-foreground text-sm">
+                <td className="px-6 py-4 text-[var(--color-muted-foreground)] text-sm">
                   {subscriber.source || 'Direct'}
                 </td>
                 <td className="px-6 py-4">
@@ -136,21 +136,21 @@ export default function SubscriberManagementPage() {
         </table>
         
         {totalPages > 1 && (
-          <div className="flex justify-between items-center px-6 py-3 border-t">
+          <div className="flex justify-between items-center px-6 py-3 border-t border-[var(--color-border-base)]">
             <button
               onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
               disabled={currentPage === 1}
-              className="hover:bg-muted disabled:opacity-50 px-3 py-1 rounded disabled:cursor-not-allowed"
+              className="hover:bg-[var(--color-hover-background)] disabled:opacity-50 px-3 py-1 rounded disabled:cursor-not-allowed"
             >
               Previous
             </button>
-            <span className="text-muted-foreground text-sm">
+            <span className="text-[var(--color-muted-foreground)] text-sm">
               Page {currentPage} of {totalPages}
             </span>
             <button
               onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
               disabled={currentPage === totalPages}
-              className="hover:bg-muted disabled:opacity-50 px-3 py-1 rounded disabled:cursor-not-allowed"
+              className="hover:bg-[var(--color-hover-background)] disabled:opacity-50 px-3 py-1 rounded disabled:cursor-not-allowed"
             >
               Next
             </button>

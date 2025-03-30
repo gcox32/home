@@ -31,7 +31,7 @@ export default function SignInModal({ isOpen, onClose }: SignInModalProps) {
   return (
     <div className="z-[100] fixed inset-0 flex justify-center items-center bg-black/50" onClick={onClose}>
       <div 
-        className="bg-background shadow-lg p-6 rounded-lg w-full max-w-md" 
+        className="bg-[var(--color-background)] shadow-lg p-6 rounded-lg w-full max-w-md text-[var(--color-foreground)]" 
         onClick={(e) => e.stopPropagation()}
       >
         <h2 className="mb-4 font-bold text-2xl">Sign In</h2>
@@ -50,7 +50,7 @@ export default function SignInModal({ isOpen, onClose }: SignInModalProps) {
               type="text"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
-              className="bg-transparent px-3 py-2 border rounded-lg w-full"
+              className="bg-[var(--color-background)] px-3 py-2 border focus:border-[var(--color-accent)] border-[var(--color-border-base)] rounded-lg focus:outline-none focus:ring-[var(--color-accent)] focus:ring-2 w-full"
               required
             />
           </div>
@@ -64,7 +64,7 @@ export default function SignInModal({ isOpen, onClose }: SignInModalProps) {
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="bg-transparent px-3 py-2 border rounded-lg w-full"
+              className="bg-[var(--color-background)] px-3 py-2 border focus:border-[var(--color-accent)] border-[var(--color-border-base)] rounded-lg focus:outline-none focus:ring-[var(--color-accent)] focus:ring-2 w-full"
               required
             />
           </div>
@@ -73,13 +73,13 @@ export default function SignInModal({ isOpen, onClose }: SignInModalProps) {
             <button
               type="button"
               onClick={onClose}
-              className="hover:bg-black/[.05] dark:hover:bg-white/[.06] px-4 py-2 rounded-lg text-sm transition-colors cursor-pointer"
+              className="hover:bg-[var(--color-hover-background)] px-4 py-2 rounded-lg text-sm transition-colors cursor-pointer"
             >
               Cancel
             </button>
             <button
               type="submit"
-              className="hover:bg-black/[.05] dark:hover:bg-white/[.06] px-4 py-2 rounded-lg text-sm transition-colors cursor-pointer"
+              className="hover:bg-[var(--color-hover-background)] px-4 py-2 rounded-lg text-sm transition-colors cursor-pointer"
             >
               Sign In
             </button>

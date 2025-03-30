@@ -63,7 +63,7 @@ export default function LinkInput({ editor, onClose, position }: LinkInputProps)
         onClick={onClose}
       />
       <div 
-        className="z-50 absolute bg-white dark:bg-gray-800 shadow-lg border border-gray-200 dark:border-gray-700 rounded-lg"
+        className="z-50 absolute bg-[var(--color-background)] shadow-lg border border-[var(--color-border-base)] rounded-lg"
         style={{
           top: `${position.y}px`,
           left: `${Math.max(210, position.x + 20)}px`,
@@ -78,7 +78,7 @@ export default function LinkInput({ editor, onClose, position }: LinkInputProps)
             onChange={(e) => setText(e.target.value)}
             onKeyDown={handleKeyDown}
             placeholder="Link text..."
-            className="dark:bg-gray-700 px-2 py-1 border dark:border-gray-600 rounded focus:outline-none focus:ring-2 focus:ring-accent min-w-[200px] dark:text-white text-sm"
+            className="bg-[var(--color-background)] px-2 py-1 border border-[var(--color-border-base)] rounded focus:outline-none focus:ring-[var(--color-accent)] focus:ring-2 min-w-[200px] text-[var(--color-foreground)] text-sm"
           />
           <div className="flex gap-2">
             <input
@@ -88,7 +88,7 @@ export default function LinkInput({ editor, onClose, position }: LinkInputProps)
               onChange={(e) => setUrl(e.target.value)}
               onKeyDown={handleKeyDown}
               placeholder="Enter URL..."
-              className="dark:bg-gray-700 px-2 py-1 border dark:border-gray-600 rounded focus:outline-none focus:ring-2 focus:ring-accent min-w-[200px] dark:text-white text-sm"
+              className="bg-[var(--color-background)] px-2 py-1 border border-[var(--color-border-base)] rounded focus:outline-none focus:ring-[var(--color-accent)] focus:ring-2 min-w-[200px] text-[var(--color-foreground)] text-sm"
             />
             <button
               onClick={handleAdd}
@@ -99,7 +99,7 @@ export default function LinkInput({ editor, onClose, position }: LinkInputProps)
           </div>
         </div>
         <div 
-          className="bottom-0 absolute bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700 border-r border-b w-2 h-2 rotate-45 translate-y-1/2 transform"
+          className="bottom-0 absolute bg-[var(--color-background)] border-r border-[var(--color-border-base)] border-b w-2 h-2 rotate-45 translate-y-1/2 transform"
           style={{
             left: `${Math.min(Math.max(10, position.x - Math.max(210, position.x + 20) + 150), 290)}px`
           }}

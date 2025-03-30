@@ -39,14 +39,14 @@ export default function Modal({ isOpen, onClose, title, children }: ModalProps) 
   if (!isOpen) return null;
 
   return (
-    <div className="z-50 fixed inset-0 flex justify-center items-center bg-black/50 dark:bg-black/70">
+    <div className="z-50 fixed inset-0 flex justify-center items-center bg-black/50">
       <div 
         ref={modalRef}
-        className="bg-background p-5 rounded-lg w-[90%] max-w-[500px] max-h-[90vh] overflow-y-auto text-foreground"
+        className="bg-[var(--color-background)] p-5 rounded-lg w-[90%] max-w-[500px] max-h-[90vh] overflow-y-auto text-[var(--color-foreground)]"
       >
-        <div className="flex justify-between items-center mb-5 pb-2.5 dark:border-white/10 border-b border-black/10">
+        <div className="flex justify-between items-center mb-5 pb-2.5 border-[var(--color-border-base)] border-b">
           <h4 className="font-semibold text-lg">{title}</h4>
-          <button 
+          <button  
             onClick={onClose}
             className="hover:opacity-70 text-2xl leading-none transition-opacity cursor-pointer"
           >

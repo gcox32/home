@@ -9,7 +9,7 @@ interface MobileNavProps {
 export default function MobileNav({ isMenuOpen, setIsMenuOpen, navLinks }: MobileNavProps) {
   return (
     <div
-      className={`md:hidden absolute left-0 right-0 bg-background dark:bg-[#0a0a0a] border-b border-black/[.08] dark:border-white/[.145] transition-all duration-300 ${
+      className={`md:hidden absolute left-0 right-0 bg-[var(--color-background)] border-b border-[var(--border-color)] transition-all duration-300 ${
         isMenuOpen ? 'top-full opacity-100' : '-top-96 opacity-0'
       }`}
     >
@@ -18,7 +18,7 @@ export default function MobileNav({ isMenuOpen, setIsMenuOpen, navLinks }: Mobil
           <Link
             key={index}
             href={link.href}
-            className="px-2 py-1.5 hover:text-primary transition-colors"
+            className="hover:bg-[var(--color-hover-background)] px-2 py-1.5 hover:text-[var(--color-hover-foreground)] transition-colors"
             onClick={() => setIsMenuOpen(false)}
           >
             {link.label}

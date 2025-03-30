@@ -39,10 +39,10 @@ export default function TagsPage() {
     <div className="mx-auto px-6 py-12 max-w-7xl">
       <div className="w-full">
         <header className="mb-12">
-          <h1 className="mb-4 font-bold text-foreground text-3xl">
+          <h1 className="mb-4 font-bold text-[var(--color-foreground)] text-3xl">
             Tags
           </h1>
-          <p className="text-muted-foreground">
+          <p className="text-[var(--color-muted-foreground)]">
             Browse blog posts by topic
           </p>
         </header>
@@ -52,9 +52,9 @@ export default function TagsPage() {
             <Link
               key={tag.id}
               href={`/blog/tags/${tag.slug}`}
-              className="bg-black/[.02] hover:bg-black/[.05] dark:bg-white/[.02] dark:hover:bg-white/[.05] p-4 border hover:border-white/[.5] dark:border-white/10 dark:hover:border-black/[.5] rounded-lg transition-colors"
+              className="bg-[var(--color-background-secondary)] hover:bg-[var(--color-hover-background)] p-4 border hover:border-[var(--color-border-hover)] border-[var(--color-border-base)] rounded-lg transition-colors"
             >
-              <h2 className="font-medium text-foreground">{tag.name}</h2>
+              <h2 className="font-medium text-[var(--color-foreground)]">{tag.name}</h2>
             </Link>
           ))}
         </div>

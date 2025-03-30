@@ -15,7 +15,7 @@ export default function Portfolio() {
           <h2 className="font-semibold text-2xl">Professional Experience</h2>
           <Link
             href="/resume.pdf"
-            className="bg-black/[.05] hover:bg-black/[.25] dark:bg-white/[.06] dark:hover:bg-white/[.3] px-3 py-1.5 rounded-lg hover:text-primary transition-colors"
+            className="bg-[var(--color-background-secondary)] hover:bg-[var(--color-hover-background)] px-3 py-1.5 rounded-lg transition-colors"
             target="_blank"
           >
             {`Résumé`}

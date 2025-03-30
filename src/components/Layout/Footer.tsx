@@ -4,7 +4,7 @@ import React from 'react';
 
 export default function Footer() {
   return (
-    <footer className="z-10 relative mt-auto py-8 dark:border-white/[.145] border-t border-black/[.08] w-full">
+    <footer className="z-10 relative mt-auto py-8 border-[var(--color-border)] border-t w-full">
       <div className="flex flex-wrap justify-center items-center gap-6 mx-auto px-4 max-w-7xl">
         <a
           href="https://github.com/gcox32"

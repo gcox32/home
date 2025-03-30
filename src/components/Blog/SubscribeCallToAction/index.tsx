@@ -44,11 +44,11 @@ export default function SubscribeCallToAction({ source }: { source: string }) {
   };
 
   return (
-    <div className="bg-black/[.02] dark:bg-white/[.02] mt-16 p-8 border dark:border-white/10 rounded-lg text-center">
-      <h2 className="mb-4 font-semibold text-foreground text-2xl">
+    <div className="mt-16 p-8 bg-border border border-[var(--color-border-base)] rounded-lg text-center">
+      <h2 className="mb-4 font-semibold text-[var(--color-foreground)] text-2xl">
         Stay Updated
       </h2>
-      <p className="mb-6 text-muted-foreground">
+      <p className="mb-6 text-[var(--color-muted-foreground)]">
         Want to read more content like this? Stay updated on future posts.
       </p>
       
@@ -60,13 +60,13 @@ export default function SubscribeCallToAction({ source }: { source: string }) {
             onChange={(e) => setEmail(e.target.value)}
             placeholder="Enter your email"
             required
-            className="flex-1 bg-background px-4 py-2 border focus:border-accent border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-accent text-foreground"
+            className="flex-1 bg-[var(--color-background)] px-4 py-2 border focus:border-[var(--color-accent)] border-[var(--color-border-base)] rounded-lg focus:outline-none focus:ring-[var(--color-accent)] focus:ring-2 text-[var(--color-foreground)]"
             disabled={status === 'loading' || status === 'success'}
           />
           <button
             type="submit"
             disabled={status === 'loading' || status === 'success'}
-            className="bg-accent hover:bg-accent/90 disabled:opacity-50 px-6 py-2 rounded-lg w-[120px] text-white transition-colors cursor-pointer disabled:cursor-not-allowed"
+            className="bg-[var(--color-accent)] disabled:opacity-50 px-6 py-2 rounded-lg w-[120px] transition-colors text-[var(--color-accent-foreground)] hover:bg-[var(--color-accent-dark)] cursor-pointer disabled:cursor-not-allowed"
           >
             {status === 'loading' ? <LoadingSpinner /> : 'Subscribe'}
           </button>

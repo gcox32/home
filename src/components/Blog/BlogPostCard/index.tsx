@@ -27,7 +27,7 @@ export default function BlogPostCard({ post }: BlogPostCardProps) {
   return (
     <Link 
       href={`/blog/${post.slug}`}
-      className="group flex flex-col bg-black/[.02] dark:bg-white/[.02] border hover:border-white/[.5] dark:border-white/10 border-black/10 dark:hover:border-black/[.5] rounded-lg overflow-hidden transition-colors duration-200 cursor-pointer"
+      className="group flex flex-col bg-[var(--color-background-secondary)] border hover:border-[var(--color-border-hover)] border-[var(--color-border-base)] rounded-lg overflow-hidden transition-colors duration-200 cursor-pointer"
     >
       <article>
         {post.featuredImage && (
@@ -43,10 +43,10 @@ export default function BlogPostCard({ post }: BlogPostCardProps) {
           </div>
         )}
         <div className="flex flex-col flex-1 p-6">
-          <h2 className="mb-2 font-semibold text-foreground text-2xl transition-colors">
+          <h2 className="mb-2 font-semibold text-[var(--color-foreground)] text-2xl transition-colors">
             {post.title}
           </h2>
-          <div className="mb-4 text-foreground text-sm">
+          <div className="mb-4 text-[var(--color-foreground)] text-sm">
             <time dateTime={post.publishDate}>
               {new Date(post.publishDate).toLocaleDateString()}
             </time>
@@ -61,14 +61,14 @@ export default function BlogPostCard({ post }: BlogPostCardProps) {
                     e.stopPropagation();
                     window.location.href = `/blog/tags/${tag.slug}`;
                   }}
-                  className="bg-background-secondary hover:bg-primary px-3 py-1 border hover:border-white/[.5] rounded-full text-foreground text-xs transition-colors"
+                  className="bg-[var(--color-background)] hover:bg-[var(--color-hover-background)] px-3 py-1 border hover:border-[var(--color-border-hover)] border-[var(--color-border-base)] rounded-full text-[var(--color-foreground)] text-xs transition-colors"
                 >
                   {tag.name}
                 </button>
               ))}
             </div>
           )}
-          <p className="text-foreground">{post.excerpt}</p>
+          <p className="text-[var(--color-foreground)]">{post.excerpt}</p>
         </div>
       </article>
     </Link>

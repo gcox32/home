@@ -101,7 +101,7 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
         )}
 
         <div
-          className="dark:prose-invert max-w-none prose"
+          className="[&>code]:bg-[var(--color-prose-code-bg)] [&>pre]:bg-[var(--color-prose-code-bg)] [&>blockquote]:border-[var(--color-prose-quote-borders)] max-w-none [&>*]:text-[var(--color-prose-text)] [&>a]:text-[var(--color-prose-links)] [&>blockquote]:text-[var(--color-prose-quotes)] [&>code]:text-[var(--color-prose-code)] [&>h1]:text-[var(--color-prose-headings)] [&>h2]:text-[var(--color-prose-headings)] [&>h3]:text-[var(--color-prose-headings)] [&>h4]:text-[var(--color-prose-headings)] [&>strong]:text-[var(--color-prose-bold)] prose"
           dangerouslySetInnerHTML={{ __html: post.content }}
         />
         <SubscribeCallToAction source="blog_post" />

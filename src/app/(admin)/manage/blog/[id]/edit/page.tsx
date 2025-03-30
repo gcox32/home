@@ -187,12 +187,12 @@ export default function EditBlogPostPage({ params }: { params: Promise<{ id: str
               onChange={handleChange}
               onBlur={generateSlug}
               required
-              className="bg-background px-3 py-2 border focus:border-accent border-border rounded-md focus:outline-none focus:ring-2 focus:ring-accent text-foreground"
+              className="bg-[var(--color-background)] px-3 py-2 border focus:border-[var(--color-accent)] border-[var(--color-border-base)] rounded-md focus:outline-none focus:ring-[var(--color-accent)] focus:ring-2 text-[var(--color-foreground)]"
             />
           </div>
 
           <div className="flex flex-col gap-2">
-            <label htmlFor="slug" className="font-medium text-foreground text-sm">Slug</label>
+            <label htmlFor="slug" className="font-medium text-[var(--color-foreground)] text-sm">Slug</label>
             <input
               type="text"
               id="slug"
@@ -200,12 +200,12 @@ export default function EditBlogPostPage({ params }: { params: Promise<{ id: str
               value={formData.slug}
               onChange={handleChange}
               required
-              className="bg-background px-3 py-2 border focus:border-accent border-border rounded-md focus:outline-none focus:ring-2 focus:ring-accent text-foreground"
+              className="bg-[var(--color-background)] px-3 py-2 border focus:border-[var(--color-accent)] border-[var(--color-border-base)] rounded-md focus:outline-none focus:ring-[var(--color-accent)] focus:ring-2 text-[var(--color-foreground)]"
             />
           </div>
 
           <div className="flex flex-col gap-2">
-            <label htmlFor="excerpt" className="font-medium text-foreground text-sm">Excerpt</label>
+            <label htmlFor="excerpt" className="font-medium text-[var(--color-foreground)] text-sm">Excerpt</label>
             <textarea
               id="excerpt"
               name="excerpt"
@@ -213,7 +213,7 @@ export default function EditBlogPostPage({ params }: { params: Promise<{ id: str
               onChange={handleChange}
               required
               rows={3}
-              className="bg-background px-3 py-2 border focus:border-accent border-border rounded-md focus:outline-none focus:ring-2 focus:ring-accent text-foreground"
+              className="bg-[var(--color-background)] px-3 py-2 border focus:border-[var(--color-accent)] border-[var(--color-border-base)] rounded-md focus:outline-none focus:ring-[var(--color-accent)] focus:ring-2 text-[var(--color-foreground)]"
             />
           </div>
 
@@ -288,7 +288,7 @@ export default function EditBlogPostPage({ params }: { params: Promise<{ id: str
           <button
             type="button"
             onClick={() => router.back()}
-            className="hover:bg-black/[.05] dark:hover:bg-white/[.06] px-4 py-2 border border-accent rounded hover:text-white text-sm transition-colors cursor-pointer"
+            className="hover:bg-[var(--color-hover-background)] px-4 py-2 border border-[var(--color-border-base)] rounded text-[var(--color-foreground)] text-sm transition-colors cursor-pointer"
           >
             Cancel
           </button>

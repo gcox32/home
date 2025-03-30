@@ -237,14 +237,14 @@ export default function NewBlogPostPage() {
           <button
             type="button"
             onClick={() => router.back()}
-            className="hover:bg-black/[.05] dark:hover:bg-white/[.06] px-4 py-2 border border-border rounded-md text-sm transition-colors cursor-pointer"
+            className="hover:bg-[var(--color-hover-background)] px-4 py-2 border border-[var(--color-border-base)] rounded-md text-[var(--color-foreground)] text-sm transition-colors cursor-pointer"
           >
             Cancel
           </button>
           <button
             type="submit"
             disabled={loading}
-            className="hover:bg-black/[.05] dark:hover:bg-white/[.06] disabled:opacity-50 px-4 py-2 rounded-md text-white text-sm transition-colors cursor-pointer disabled:cursor-not-allowed"
+            className="bg-[var(--color-accent)] disabled:opacity-50 px-4 py-2 rounded-md text-sm transition-colors text-[var(--color-accent-foreground)] hover:bg-[var(--color-accent-dark)] cursor-pointer disabled:cursor-not-allowed"
           >
             {loading ? 'Creating...' : 'Create Post'}
           </button>

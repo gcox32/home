@@ -25,10 +25,10 @@ export default function Nav() {
 
   return (
     <>
-      <nav className="top-0 z-50 fixed px-4 py-3 dark:border-white/[.145] border-b border-black/[.08] w-full">
+      <nav className="top-0 z-50 fixed px-4 py-3 border-[var(--color-border)] border-b w-full">
         <div className="flex justify-between items-center mx-auto max-w-7xl">
           <div className="flex items-center gap-6">
-            <Link href="/" className="flex items-center hover:bg-black/[.05] dark:hover:bg-white/[.06] p-1 rounded-[50%] hover:text-primary transition-colors">
+            <Link href="/" className="flex items-center hover:bg-[var(--color-hover-background)] p-1 rounded-[50%] transition-colors">
               <Image
                 src={isDarkMode ? '/icons/dark/android-chrome-192x192.png' : '/icons/android-chrome-192x192.png'}
                 alt="Logo"
@@ -40,7 +40,11 @@ export default function Nav() {
 
             <div className="hidden md:flex items-center gap-6">
               {allNavLinks.map((link, index) => (
-                <Link key={index} href={link.href} className="hover:bg-black/[.05] dark:hover:bg-white/[.06] px-3 py-1.5 rounded-lg hover:text-primary transition-colors">
+                <Link 
+                  key={index} 
+                  href={link.href} 
+                  className="hover:bg-[var(--color-hover-background)] px-3 py-1.5 rounded-lg transition-colors"
+                >
                   {link.label}
                 </Link>
               ))}

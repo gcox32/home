@@ -10,7 +10,7 @@ export default function SignInButton({ isAuthenticated, signOut, setIsSignInModa
         return (
             <button
                 onClick={signOut}
-                className="hover:bg-black/[.05] dark:hover:bg-white/[.06] px-3 py-1.5 rounded-lg text-sm transition-colors cursor-pointer"
+                className="hover:bg-[var(--color-hover-background)] px-3 py-1.5 rounded-lg text-sm transition-colors cursor-pointer"
             >
                 Sign Out
             </button>
@@ -19,7 +19,7 @@ export default function SignInButton({ isAuthenticated, signOut, setIsSignInModa
         return (
             <button
                 onClick={() => setIsSignInModalOpen(true)}
-                className="hover:bg-black/[.05] dark:hover:bg-white/[.06] px-3 py-1.5 rounded-lg text-sm transition-colors cursor-pointer"
+                className="hover:bg-[var(--color-hover-background)] px-3 py-1.5 rounded-lg text-sm transition-colors cursor-pointer"
             >
                 Sign In
             </button>

@@ -27,7 +27,7 @@ export default function DeleteButton({
   return (
     <>
       <button
-        className={`hover:bg-black/[.05] dark:hover:bg-white/[.05] p-2 rounded-full transition-colors text-black/70 dark:text-white/70 hover:text-red-500 dark:hover:text-red-400 ${buttonClassName || ''}`}
+        className={`hover:bg-[var(--color-hover-background)] p-2 rounded-full transition-colors text-[var(--color-muted-foreground)] hover:text-red-500 ${buttonClassName || ''}`}
         onClick={(e) => {
           e.stopPropagation();
           setIsConfirmOpen(true);
@@ -43,11 +43,11 @@ export default function DeleteButton({
         title={modalTitle}
       >
         <div className="flex flex-col gap-6">
-          <p className="text-foreground">{confirmationText}</p>
+          <p className="text-[var(--color-foreground)]">{confirmationText}</p>
           <div className="flex justify-end gap-3">
             <button
               onClick={() => setIsConfirmOpen(false)}
-              className="hover:bg-black/[.05] dark:hover:bg-white/[.05] px-4 py-2 rounded-lg transition-colors"
+              className="hover:bg-[var(--color-hover-background)] px-4 py-2 rounded-lg transition-colors"
             >
               Cancel
             </button>
