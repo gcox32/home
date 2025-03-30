@@ -15,7 +15,6 @@ interface BasePortfolioCardProps {
 }
 
 export default function BasePortfolioCard({ title, description, children, technologies, siteUrl, backgroundImage, backgroundPosition, backgroundColor = undefined, foregroundImage = null, foregroundPosition, textColor = 'var(--text-white)' }: BasePortfolioCardProps) {
-    console.log(title, description, children, technologies, siteUrl, backgroundImage, backgroundPosition, backgroundColor, foregroundImage, foregroundPosition, textColor);
     return (
         <div className="relative space-y-6 md:bg-[image:var(--bg-image)] bg-none p-6 border rounded-lg" style={{
             '--bg-image': `url(${backgroundImage})`,

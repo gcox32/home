@@ -3,12 +3,11 @@
 import Link from 'next/link';
 
 export default function UnauthorizedPost({ status }: { status: 'draft' | 'archived' }) {
-    console.log('UnauthorizedPost component level');
   return (
-    <main className="max-w-4xl mx-auto px-4 py-12">
+    <main className="mx-auto px-4 py-12 max-w-4xl">
       <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Post Not Available</h1>
-        <p className="text-lg text-muted-text mb-8">
+        <h1 className="mb-4 font-bold text-4xl">Post Not Available</h1>
+        <p className="mb-8 text-muted-text text-lg">
           {status === 'draft' 
             ? 'This blog post is currently in draft and is not yet published.'
             : 'This blog post has been archived and is no longer available.'}
