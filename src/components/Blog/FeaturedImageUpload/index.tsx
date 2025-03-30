@@ -24,7 +24,7 @@ export default function FeaturedImageUpload({
       <ImageUpload
         value={value}
         onChange={onChange}
-        uploadEndpoint="/api/upload/blog-image"
+        uploadEndpoint="/api/blog/upload-image"
         fileNamePrefix={`${blogId}-featured`}
         slug={slug}
         aspectRatio={16/9}

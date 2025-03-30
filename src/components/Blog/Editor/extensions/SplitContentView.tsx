@@ -22,7 +22,7 @@ export function SplitContentView({ node, selected, editor }: NodeViewProps) {
 
       setIsUploading(true);
       try {
-        const response = await fetch('/api/upload/blog-image', {
+        const response = await fetch('/api/blog/upload-image', {
           method: 'PUT',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({

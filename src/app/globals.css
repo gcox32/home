@@ -4,21 +4,32 @@
   --background: #ffffff;
   --background-secondary: #f9f9f9;
   --foreground: #171717;
+  --muted-foreground: #666666;
   --nav-height: 65px;    /* 3.5rem */
   --footer-height: 89px; /* py-8 (64px) + 1px border + content height */
   --text-white: color-mix(in oklab, #ededed 80%, transparent);
+  --accent: #0070f3;
+  --accent-dark: #0051b3;
+  --accent-light: #3291ff;
+  --accent-foreground: #ffffff;
 }
 
 .dark {
   --background: #0a0a0a;
   --background-secondary: #171717;
   --foreground: #ededed;
+  --muted-foreground: #999999;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-background-secondary: var(--background-secondary);
+  --color-accent: var(--accent);
+  --color-accent-dark: var(--accent-dark);
+  --color-accent-light: var(--accent-light);
+  --color-accent-foreground: var(--accent-foreground);
   --color-foreground: var(--foreground);
+  --color-muted-foreground: var(--muted-foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }

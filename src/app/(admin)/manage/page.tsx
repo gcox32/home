@@ -12,10 +12,17 @@ export default function Management() {
           href="/manage/blog"
           className="bg-black/[.05] hover:bg-black/[.08] dark:bg-white/[.05] dark:hover:bg-white/[.08] p-6 rounded-lg transition-colors"
         >
-          <h3 className="mb-2 font-semibold text-xl">Blog Management</h3>
+          <h3 className="mb-2 font-semibold text-xl">Blog</h3>
           <p className="text-foreground/60">Create, edit, and manage blog posts</p>
         </Link>
 
+        <Link
+          href="/manage/subscribers"
+          className="bg-black/[.05] hover:bg-black/[.08] dark:bg-white/[.05] dark:hover:bg-white/[.08] p-6 rounded-lg transition-colors"
+          >
+            <h3 className="mb-2 font-semibold text-xl">Subscribers</h3>
+            <p className="text-foreground/60">View and manage subscribers</p>
+          </Link>
       </div>
     </PageLayout>
   );

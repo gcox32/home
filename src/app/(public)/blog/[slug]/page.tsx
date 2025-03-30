@@ -8,6 +8,7 @@ import Skeleton from '@/components/Common/Skeleton';
 import UnauthorizedPost from './unauthorized-post';
 import { BlogPost, BlogTag } from '@/types';
 import { getPostTags, getBlogPostBySlug } from '@/utils/blog';
+import SubscribeCallToAction from '@/components/Blog/SubscribeCallToAction';
 
 export default function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
   const resolvedParams = use(params);
@@ -103,6 +104,7 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
           className="dark:prose-invert max-w-none prose"
           dangerouslySetInnerHTML={{ __html: post.content }}
         />
+        <SubscribeCallToAction source="blog_post" />
       </article>
     </div>
   );

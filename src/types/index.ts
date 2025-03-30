@@ -33,3 +33,9 @@ export interface BlogPostTagFormData {
     status: 'draft' | 'published' | 'archived';
     tags: string[];
 }
+
+export interface BlogSubscriber {
+    email: string;
+    subscribedAt: string;
+    source: string;
+}

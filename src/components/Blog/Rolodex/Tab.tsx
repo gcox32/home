@@ -98,9 +98,9 @@ function inferExitState(direction: number, position: 'top' | 'bottom', priority?
 
 export default function Tab({ direction, tab, tabSlot, position, priority }: TabProps) {
     const leftPercent = tabSlot * (90 / 5) + 2.5 // 6 slots across
-    const debouncedDirection = useDebounce(direction, 100);
-    const debouncedPosition = useDebounce(position, 100);
-    const debouncedPriority = useDebounce(priority, 100);
+    const debouncedDirection = useDebounce(direction, 300);
+    const debouncedPosition = useDebounce(position, 300);
+    const debouncedPriority = useDebounce(priority, 300);
     return (
         <motion.div
             initial={inferInitialState(debouncedDirection, debouncedPosition, debouncedPriority)}
