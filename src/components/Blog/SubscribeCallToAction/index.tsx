@@ -53,7 +53,7 @@ export default function SubscribeCallToAction({ source }: { source: string }) {
       </p>
       
       <form onSubmit={handleSubmit} className="mx-auto max-w-md">
-        <div className="flex gap-2">
+        <div className="flex flex-wrap justify-center gap-2">
           <input
             type="email"
             value={email}
@@ -66,7 +66,7 @@ export default function SubscribeCallToAction({ source }: { source: string }) {
           <button
             type="submit"
             disabled={status === 'loading' || status === 'success'}
-            className="bg-[var(--color-accent)] disabled:opacity-50 px-6 py-2 rounded-lg w-[120px] transition-colors text-[var(--color-accent-foreground)] hover:bg-[var(--color-accent-dark)] cursor-pointer disabled:cursor-not-allowed"
+            className="bg-[var(--color-accent)] disabled:opacity-50 px-6 py-2 rounded-lg w-[120px] sm:w-[120px] w-full transition-colors text-[var(--color-accent-foreground)] hover:bg-[var(--color-accent-dark)] cursor-pointer disabled:cursor-not-allowed"
           >
             {status === 'loading' ? <LoadingSpinner /> : 'Subscribe'}
           </button>
