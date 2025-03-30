@@ -15,6 +15,7 @@
   --border: color-mix(in oklab, black 5%, transparent);
   
   /* Hover states */
+  --hover-background-soft: color-mix(in oklab, black 2%, transparent);
   --hover-background: color-mix(in oklab, black 5%, transparent);
   --hover-background-intense: color-mix(in oklab, black 8%, transparent);
   --hover-foreground: var(--accent);
@@ -45,8 +46,10 @@
   --foreground: #ededed;
   --muted-foreground: #999999;
   --border: color-mix(in oklab, white 5%, transparent);
+  
   /* Hover states */
-  --hover-background: color-mix(in oklab, white 36%, transparent);
+  --hover-background-soft: color-mix(in oklab, white 2%, transparent);
+  --hover-background: color-mix(in oklab, white 5%, transparent);
   --hover-background-intense: color-mix(in oklab, white 8%, transparent);
   --hover-foreground: var(--accent-light);
   
@@ -85,6 +88,7 @@
   --color-background-hover: var(--link-hover-background);
   
   /* Hover state variables */
+  --color-hover-background-soft: var(--hover-background-soft);
   --color-hover-background: var(--hover-background);
   --color-hover-background-intense: var(--hover-background-intense);
   --color-hover-foreground: var(--hover-foreground);

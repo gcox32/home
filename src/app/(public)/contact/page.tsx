@@ -1,17 +1,19 @@
 import PageLayout from '@/components/Layout/PageLayout';
 
 export default function Contact() {
+  const email = 'grant@letmedemo.com';
   return (
-    <PageLayout 
-      title="Contact"
-      description="Get in touch with me"
+    <PageLayout
+      title=""
+      description="Get in touch"
+      align="center"
     >
-      <div className="space-y-6 mx-auto w-full max-w-lg">
+      <div className="space-y-6 mx-auto w-[220px]">
         <a
-          href="mailto:grant@letmedemo.com"
-          className="block bg-primary hover:bg-primary/90 px-4 py-3 rounded-lg w-full text-muted-foreground text-center transition-colors"
+          href={`mailto:${email}`}
+          className="block hover:bg-[var(--color-hover-background)] px-4 py-3 border bg-[var(--color-border-base)] border-[var(--color-border-base)] rounded-lg text-[var(--color-foreground)] text-center transition-colors"
         >
-          Send me an email
+          {email}
         </a>
       </div>
     </PageLayout>
