@@ -1,7 +1,7 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-import { Trash2, Download } from 'lucide-react';
+import { useEffect, useState, useCallback } from 'react';
+import { Download } from 'lucide-react';
 import DeleteButton from '@/components/Common/DeleteButton';
 import { useSnackbar } from '@/contexts/SnackbarContext';
 import { BlogSubscriber } from '@/types';
@@ -21,11 +21,7 @@ export default function SubscriberManagementPage() {
     currentPage * ITEMS_PER_PAGE
   );
 
-  useEffect(() => {
-    fetchSubscribers();
-  }, []);
-
-  async function fetchSubscribers() {
+  const fetchSubscribers = useCallback(async () => {
     try {
       const response = await fetch('/api/blog/subscribers');
       if (!response.ok) throw new Error('Failed to fetch subscribers');
@@ -37,7 +33,11 @@ export default function SubscriberManagementPage() {
     } finally {
       setLoading(false);
     }
-  }
+  }, [showSnackbar]);
+
+  useEffect(() => {
+    void fetchSubscribers();
+  }, [fetchSubscribers]);
 
   async function handleDeleteSubscriber(email: string) {
     try {

@@ -18,6 +18,7 @@ const nextConfig: NextConfig = {
     BLOG_POST_TABLE: process.env.BLOG_POST_TABLE,
     BLOG_TAG_TABLE: process.env.BLOG_TAG_TABLE,
     BLOG_POST_TAG_TABLE: process.env.BLOG_POST_TAG_TABLE,
+    BLOG_SUBSCRIBER_TABLE: process.env.BLOG_SUBSCRIBER_TABLE,
   },
 };
 

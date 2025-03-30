@@ -14,6 +14,7 @@ frontend:
         - BLOG_POST_TABLE=${BLOG_POST_TABLE}
         - BLOG_TAG_TABLE=${BLOG_TAG_TABLE}
         - BLOG_POST_TAG_TABLE=${BLOG_POST_TAG_TABLE}
+        - BLOG_SUBSCRIBER_TABLE=${BLOG_SUBSCRIBER_TABLE}
         - npm run build
   artifacts:
     baseDirectory: .next
