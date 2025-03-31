@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Image from 'next/image';
 
 export function SplitContentView({ node, selected, editor }: NodeViewProps) {
+
   const [isUploading, setIsUploading] = useState(false);
   const isImageLeft = node.attrs.position === 'image-left';
   const hasImage = node.attrs.imageUrl;

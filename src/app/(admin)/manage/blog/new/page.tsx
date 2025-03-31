@@ -230,6 +230,7 @@ export default function NewBlogPostPage() {
               value={formData.content}
               onChange={handleEditorChange}
               blogId={tempBlogId}
+              slug={formData.slug}
               postDetailsExpanded={isPostDetailsOpen}
             />
           </div>

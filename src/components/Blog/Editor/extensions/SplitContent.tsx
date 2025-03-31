@@ -9,9 +9,6 @@ export interface SplitContentOptions {
 declare module '@tiptap/core' {
   interface Commands<ReturnType> {
     splitContent: {
-      /**
-       * Add a split content section
-       */
       setSplitContent: (position: 'image-left' | 'image-right') => ReturnType;
     };
   }
@@ -42,6 +39,13 @@ export const SplitContent = Node.create<SplitContentOptions>({
           'data-blog-id': attributes.blogId,
         }),
       },
+      slug: {
+        default: null,
+        parseHTML: element => element.getAttribute('data-slug'),
+        renderHTML: attributes => ({
+          'data-slug': attributes.slug,
+        }),
+      },
       imageUrl: {
         default: null,
         parseHTML: element => element.getAttribute('data-image-url'),
@@ -55,7 +59,7 @@ export const SplitContent = Node.create<SplitContentOptions>({
         renderHTML: attributes => ({
           'data-source': attributes.source,
         }),
-      },
+      }
     };
   },
 
@@ -73,26 +77,27 @@ export const SplitContent = Node.create<SplitContentOptions>({
     const source = HTMLAttributes['data-source'] || '';
     const containerClasses = `split-content ${isImageLeft ? 'image-left' : 'image-right'}`;
 
-    const children: Array<[string, Record<string, string>, ...(string | number | [string, Record<string, string>])[]]> = [];
-
-    if (imageUrl) {
-      children.push(['div', { 
-        class: 'image-container',
-        'data-source': source
-      }, ['img', { 
-        src: imageUrl, 
-        alt: '', 
-        class: 'split-content-image' 
-      }]]);
-    }
-    children.push(['div', { class: 'content' }, 0]);
-
     return ['div', 
       mergeAttributes(HTMLAttributes, { 
         'data-type': 'split-content',
-        class: containerClasses 
+        class: containerClasses,
+        'data-blog-id': HTMLAttributes['data-blog-id'],
+        'data-slug': HTMLAttributes['data-slug'],
+        'data-image-url': imageUrl,
+        'data-source': source,
+        'data-position': HTMLAttributes['data-position']
       }),
-      ...children
+      ...(imageUrl ? [
+        ['div', { 
+          class: 'image-container',
+          'data-source': source
+        }, ['img', { 
+          src: imageUrl, 
+          alt: '', 
+          class: 'split-content-image' 
+        }]]
+      ] : []),
+      ['div', { class: 'content' }, 0]
     ];
   },
 
@@ -105,13 +110,13 @@ export const SplitContent = Node.create<SplitContentOptions>({
       setSplitContent:
         (position) =>
         ({ commands, editor }) => {
-          // Insert the split content
           const success = commands.insertContent([
             {
               type: this.name,
               attrs: { 
                 position,
-                blogId: editor.storage.splitContent?.blogId 
+                blogId: editor.storage.splitContent?.blogId,
+                slug: editor.storage.splitContent?.slug
               },
               content: [
                 {

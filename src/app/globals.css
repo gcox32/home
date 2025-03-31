@@ -294,18 +294,6 @@ nav {
   font-weight: 500;
   cursor: pointer;
 }
-/* end Editor Styles */
-
-/* Split Content Styles */
-.resizable-image-handle {
-  background-color: transparent;
-  transition: background-color 0.2s;
-  z-index: 10;
-}
-
-.resizable-image-handle:hover {
-  background-color: rgba(0, 100, 255, 0.1);
-}
 
 .ProseMirror img {
   transition: width 0.1s ease-in-out;
@@ -317,6 +305,10 @@ nav {
 }
 
 .ProseMirror, .prose {
+  > p {
+    margin: 1rem 0;
+  }
+
   > h1 {
     font-size: 2.25em;
     font-weight: 800;
@@ -356,135 +348,90 @@ nav {
     padding-left: 1em;
   }
 }
+/* end Editor Styles */
 
-.split-content-wrapper {
-  margin: 1rem 0;
-}
-
+/* Split Content Styles */
 .split-content {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 2rem;
   min-height: 200px;
-  border: 1px dashed #e5e7eb;
   border-radius: 0.5rem;
   padding: 1rem;
+  margin: 1rem 0;
 }
 
-.split-content.selected {
-  border-color: #60a5fa;
+.editor-content .split-content {
+  border: 1px dashed #e5e7eb;
 }
 
-.split-content.image-right {
-  grid-template-areas: "content image";
-}
+/* Consolidate image positioning */
+.split-content.image-right { grid-template-areas: "content image"; }
+.split-content.image-left { grid-template-areas: "image content"; }
 
-.split-content.image-left {
-  grid-template-areas: "image content";
-}
-
-.split-content .image-placeholder {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background-color: #f9fafb;
-  border-radius: 0.375rem;
-  min-height: 200px;
-  cursor: pointer;
-  transition: background-color 0.2s;
-}
-
-.split-content .image-placeholder:hover {
-  background-color: #f3f4f6;
-}
-
+/* Consolidate content positioning */
 .split-content .content {
   display: flex;
   flex-direction: column;
+  grid-area: content;
+}
+
+.split-content .content-editable, .split-content .content {
+  flex: 1;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
 }
 
-.split-content .content-editable {
-  flex: 1;
-  padding: 0.5rem;
-}
 
-/* Dark mode support */
-@media (prefers-color-scheme: dark) {
-  .split-content {
-    border-color: #374151;
-  }
 
-  .split-content.selected {
-    border-color: #3b82f6;
-  }
-
-  .split-content .image-placeholder {
-    background-color: #1f2937;
-  }
-
-  .split-content .image-placeholder:hover {
-    background-color: #374151;
-  }
-}
-
-.split-content .image-container {
+/* Consolidate image container styles */
+.editor-content .split-content .image-container,
+.editor-content .split-content .image-placeholder {
+  grid-area: image;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   min-height: 200px;
   background-color: #f9fafb;
   border-radius: 0.375rem;
   overflow: hidden;
+  cursor: pointer;
+  transition: background-color 0.2s;
 }
 
-.split-content .split-content-image {
+.editor-content .split-content .image-container:hover,
+.editor-content .split-content .image-placeholder:hover {
+  background-color: #f3f4f6;
+}
+
+.editor-content .split-content .split-content-image {
   max-width: 100%;
   height: auto;
   object-fit: contain;
 }
 
+/* Dark mode consolidated */
 @media (prefers-color-scheme: dark) {
-  .split-content .image-container {
+  .editor-content .split-content {
+    border-color: #374151;
+  }
+
+  .editor-content .split-content.selected {
+    border-color: #3b82f6;
+  }
+
+  .editor-content .split-content .image-container,
+  .split-content .image-placeholder {
     background-color: #1f2937;
   }
-}
 
-.split-content .content.content-left {
-  grid-area: content;
-}
-
-.split-content .content.content-right {
-  grid-area: content;
-}
-
-.split-content .content.content-right .content-editable {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.split-content .content.content-left .content-editable {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.split-content .content.content-center .content-editable {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.split-content .image-container.image-left,
-.split-content .image-placeholder.image-left {
-  grid-area: image;
-}
-
-.split-content .image-container.image-right,
-.split-content .image-placeholder.image-right {
-  grid-area: image;
+  .editor-content .split-content .image-container:hover,
+  .editor-content .split-content .image-placeholder:hover {
+    background-color: #374151;
+  }
 }
 
 hr {
@@ -508,12 +455,12 @@ hr {
   }
 }
 
-.split-content .image-container {
+.editor-content .split-content .image-container {
   position: relative;
   cursor: pointer;
 }
 
-.split-content .image-container .image-overlay {
+.editor-content .split-content .image-container .image-overlay {
   position: absolute;
   top: 0;
   left: 0;
@@ -527,11 +474,11 @@ hr {
   transition: opacity 0.2s;
 }
 
-.split-content .image-container:hover .image-overlay {
+.editor-content .split-content .image-container:hover .image-overlay {
   opacity: 1;
 }
 
-.split-content .image-placeholder {
+.editor-content .split-content .image-placeholder {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -544,7 +491,13 @@ hr {
   transition: background-color 0.2s;
 }
 
-.split-content .image-placeholder:hover {
+.split-content .image-placeholder, 
+.split-content .image-container,
+.split-content img {
+  border-radius: 0.375rem;
+}
+
+.editor-content .split-content .image-placeholder:hover {
   background-color: #f3f4f6;
 }
 
@@ -625,7 +578,7 @@ hr {
   background-color: #f9fafb;
 }
 
-.image-placeholder {
+.editor-content .image-placeholder {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -636,7 +589,7 @@ hr {
   transition: background-color 0.2s;
 }
 
-.image-placeholder:hover {
+.editor-content .image-placeholder:hover {
   background-color: #f3f4f6;
 }
 
@@ -648,24 +601,24 @@ hr {
 }
 
 @media (prefers-color-scheme: dark) {
-  .image-source-input {
+  .editor-content .image-source-input {
     color: #9ca3af;
   }
 
-  .image-source-input:hover {
+  .editor-content .image-source-input:hover {
     border-color: #374151;
   }
 
-  .image-source-input:focus {
+  .editor-content .image-source-input:focus {
     border-color: #3b82f6;
     background-color: #1f2937;
   }
 
-  .image-placeholder {
+  .editor-content .image-placeholder {
     background-color: #1f2937;
   }
 
-  .image-placeholder:hover {
+  .editor-content .image-placeholder:hover {
     background-color: #374151;
   }
 }

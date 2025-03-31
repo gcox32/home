@@ -39,6 +39,7 @@ interface EditorProps {
   value: string;
   onChange: (value: string) => void;
   blogId: string;
+  slug: string;
   postDetailsExpanded: boolean;
 }
 
@@ -68,7 +69,8 @@ const TrailingNode = Node.create({
   },
 });
 
-export default function Editor({ value, onChange, blogId, postDetailsExpanded }: EditorProps) {
+export default function Editor({ value, onChange, blogId, slug, postDetailsExpanded }: EditorProps) {
+
   const [linkInputPosition, setLinkInputPosition] = useState<{ x: number; y: number } | null>(null);
 
   const handleEditorUpdate = useCallback(({ editor }: { editor: TipTapEditor }) => {
@@ -114,7 +116,10 @@ export default function Editor({ value, onChange, blogId, postDetailsExpanded }:
     content: value,
     onUpdate: handleEditorUpdate,
     onCreate: ({ editor }) => {
-      editor.storage.splitContent = { blogId };
+      editor.storage.splitContent = { 
+        blogId,
+        slug 
+      };
     },
     editorProps: {
       attributes: {

@@ -281,6 +281,7 @@ export default function EditBlogPostPage({ params }: { params: Promise<{ id: str
               value={formData.content}
               onChange={handleEditorChange}
               blogId={resolvedParams.id}
+              slug={formData.slug}
               postDetailsExpanded={isPostDetailsOpen}
             />
           </div>
