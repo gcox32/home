@@ -27,6 +27,7 @@ export default function EditBlogPostPage({ params }: { params: Promise<{ id: str
     status: 'draft',
     tags: []
   });
+  const [isPostDetailsOpen, setIsPostDetailsOpen] = useState(false);
 
   useEffect(() => {
     async function fetchPost() {
@@ -176,7 +177,7 @@ export default function EditBlogPostPage({ params }: { params: Promise<{ id: str
     <div className="bg-[var(--color-background-soft)] mx-auto my-2 p-6 border border-[var(--color-border-base)] rounded-lg max-w-7xl">
       <h1 className="mb-6 font-semibold text-foreground text-2xl">Edit Blog Post</h1>
       <form onSubmit={handleSubmit} className="flex flex-col gap-6">
-        <CollapsibleSection title="Post Details">
+        <CollapsibleSection title="Post Details" onExpandedChange={setIsPostDetailsOpen}>
           <div className="flex flex-col gap-2">
             <label htmlFor="title" className="font-medium text-foreground text-sm">Title</label>
             <input
@@ -280,6 +281,7 @@ export default function EditBlogPostPage({ params }: { params: Promise<{ id: str
               value={formData.content}
               onChange={handleEditorChange}
               blogId={resolvedParams.id}
+              postDetailsExpanded={isPostDetailsOpen}
             />
           </div>
         </CollapsibleSection>

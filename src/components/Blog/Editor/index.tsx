@@ -39,6 +39,7 @@ interface EditorProps {
   value: string;
   onChange: (value: string) => void;
   blogId: string;
+  postDetailsExpanded: boolean;
 }
 
 const TrailingNode = Node.create({
@@ -67,7 +68,7 @@ const TrailingNode = Node.create({
   },
 });
 
-export default function Editor({ value, onChange, blogId }: EditorProps) {
+export default function Editor({ value, onChange, blogId, postDetailsExpanded }: EditorProps) {
   const [linkInputPosition, setLinkInputPosition] = useState<{ x: number; y: number } | null>(null);
 
   const handleEditorUpdate = useCallback(({ editor }: { editor: TipTapEditor }) => {
@@ -144,9 +145,12 @@ export default function Editor({ value, onChange, blogId }: EditorProps) {
     const { from } = editor.state.selection;
     const coords = editor.view.coordsAtPos(from);
     
+    // Adjust for the collapsed section height
+    const detailsHeight = postDetailsExpanded ? 1215 : 0; // Approximate height when expanded
+    console.log(detailsHeight);
     setLinkInputPosition({
       x: coords.left,
-      y: coords.top
+      y: coords.top + detailsHeight
     });
   };
 

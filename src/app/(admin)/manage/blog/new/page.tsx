@@ -25,6 +25,7 @@ export default function NewBlogPostPage() {
     status: 'draft',
     tags: []
   });
+  const [isPostDetailsOpen, setIsPostDetailsOpen] = useState(true);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -127,7 +128,7 @@ export default function NewBlogPostPage() {
     <div className="mx-auto p-6 max-w-7xl">
       <h1 className="mb-6 font-semibold text-2xl">Create New Blog Post</h1>
       <form onSubmit={handleSubmit} className="flex flex-col gap-6">
-        <CollapsibleSection title="Post Details">
+        <CollapsibleSection title="Post Details" defaultExpanded={true} onExpandedChange={setIsPostDetailsOpen}>
           <div className="flex flex-col gap-2">
             <label htmlFor="title" className="font-medium text-sm">Title</label>
             <input
@@ -223,12 +224,13 @@ export default function NewBlogPostPage() {
           </div>
         </CollapsibleSection>
 
-        <CollapsibleSection title="Content" defaultExpanded={true}>
+        <CollapsibleSection title="Content" defaultExpanded={true} onExpandedChange={setIsPostDetailsOpen}>
           <div className="flex flex-col gap-2">
             <Editor
               value={formData.content}
               onChange={handleEditorChange}
               blogId={tempBlogId}
+              postDetailsExpanded={isPostDetailsOpen}
             />
           </div>
         </CollapsibleSection>
