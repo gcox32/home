@@ -147,7 +147,7 @@ export default function Editor({ value, onChange, blogId, postDetailsExpanded }:
     
     // Adjust for the collapsed section height
     const detailsHeight = postDetailsExpanded ? 1215 : 0; // Approximate height when expanded
-    console.log(detailsHeight);
+
     setLinkInputPosition({
       x: coords.left,
       y: coords.top + detailsHeight

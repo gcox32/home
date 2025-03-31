@@ -22,7 +22,7 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
     async function fetchPost() {
       try {
         const matchingPost = await getBlogPostBySlug(resolvedParams.slug);
-        console.log(matchingPost);
+
         if (!matchingPost) {
           notFound();
         }
