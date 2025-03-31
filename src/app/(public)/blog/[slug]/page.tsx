@@ -9,6 +9,7 @@ import UnauthorizedPost from './unauthorized-post';
 import { BlogPost, BlogTag } from '@/types';
 import { getPostTags, getBlogPostBySlug } from '@/utils/blog';
 import SubscribeCallToAction from '@/components/Blog/SubscribeCallToAction';
+import { calculateReadTime } from '@/utils/readTime';
 
 export default function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
   const resolvedParams = use(params);
@@ -67,10 +68,12 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
       <article>
         <header className="mb-8">
           <h1 className="mb-4 font-bold text-foreground text-4xl">{post.title}</h1>
-          <div className="mb-4 text-muted-foreground text-sm">
+          <div className="flex items-center gap-4 mb-4 text-muted-foreground text-sm">
             <time dateTime={post.publishDate}>
               {new Date(post.publishDate).toLocaleDateString()}
             </time>
+            <span>•</span>
+            <span>{calculateReadTime(post.content, post.featuredImage ? 1 : 0)} min read</span>
           </div>
           {tags.length > 0 && (
             <div className="flex flex-wrap gap-2">
