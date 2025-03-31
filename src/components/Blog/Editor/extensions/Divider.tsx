@@ -3,9 +3,6 @@ import { Node } from '@tiptap/core';
 declare module '@tiptap/core' {
   interface Commands<ReturnType> {
     divider: {
-      /**
-       * Add a divider element
-       */
       setDivider: () => ReturnType;
     };
   }
