@@ -28,21 +28,26 @@ export function SplitContentView({ node, selected, editor }: NodeViewProps) {
           body: JSON.stringify({
             fileName: `${node.attrs.blogId}-${file.name.toLowerCase().replace(/[^a-z0-9.]/g, '-')}`,
             fileType: file.type,
-            slug: node.attrs.slug
+            slug: node.attrs.slug || editor.storage.splitContent?.slug
           })
         });
 
         if (!response.ok) throw new Error('Failed to get upload URL');
         const { uploadUrl, publicUrl } = await response.json();
 
-        await fetch(uploadUrl, {
+        const uploadResponse = await fetch(uploadUrl, {
           method: 'PUT',
           body: file,
           headers: { 'Content-Type': file.type }
         });
 
+        if (!uploadResponse.ok) {
+          throw new Error('Failed to upload image');
+        }
+
         editor.commands.updateAttributes('splitContent', {
-          imageUrl: publicUrl
+          imageUrl: publicUrl,
+          slug: node.attrs.slug || editor.storage.splitContent?.slug
         });
       } catch (error) {
         console.error('Image upload error:', error);
@@ -69,7 +74,8 @@ export function SplitContentView({ node, selected, editor }: NodeViewProps) {
           <div className="image-container" onClick={handleImageClick}>
             <Image
               src={node.attrs.imageUrl}
-              alt=""
+              alt={node.attrs.source || ""}
+              title={node.attrs.source || ""}
               className="split-content-image"
               fill
               sizes="(max-width: 768px) 100vw, 50vw"

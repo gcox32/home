@@ -7,12 +7,9 @@ import { getPostTags, getBlogPostBySlug } from '@/utils/blog';
 import SubscribeCallToAction from '@/components/Blog/SubscribeCallToAction';
 import { calculateReadTime } from '@/utils/readTime';
 
-export async function generateMetadata({
-  params,
-}: {
-  params: { slug: string }
-}): Promise<Metadata> {
-  const post = await getBlogPostBySlug(params.slug);
+export async function generateMetadata({params}: {params: Promise<{ slug: string }>}): Promise<Metadata> {
+  const resolvedParams = await params;
+  const post = await getBlogPostBySlug(resolvedParams.slug);
   
   if (!post) {
     return {
@@ -47,8 +44,9 @@ export async function generateMetadata({
   };
 }
 
-export default async function BlogPostPage({ params }: { params: { slug: string } }) {
-  const matchingPost = await getBlogPostBySlug(params.slug);
+export default async function BlogPostPage({ params }:  {params: Promise<{ slug: string }>}) {
+  const resolvedParams = await params;
+  const matchingPost = await getBlogPostBySlug(resolvedParams.slug);
 
   if (!matchingPost) {
     notFound();

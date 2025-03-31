@@ -93,7 +93,8 @@ export const SplitContent = Node.create<SplitContentOptions>({
           'data-source': source
         }, ['img', { 
           src: imageUrl, 
-          alt: '', 
+          alt: source || '', 
+          title: source || '',
           class: 'split-content-image' 
         }]]
       ] : []),
