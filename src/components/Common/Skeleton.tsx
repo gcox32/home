@@ -7,7 +7,7 @@ export default function Skeleton({ variant = 'list', count = 3 }: SkeletonProps)
   if (variant === 'single') {
     return (
       <div className="animate-pulse">
-        <div className="bg-[var(--color-hover-background)] mb-8 rounded w-4/5 h-12" />
+        <div className="bg-[var(--color-hover-background)] mb-8 rounded h-12" />
         <div className="space-y-4">
           <div className="bg-[var(--color-hover-background)] rounded h-4" />
           <div className="bg-[var(--color-hover-background)] rounded w-[90%] h-4" />
@@ -21,7 +21,7 @@ export default function Skeleton({ variant = 'list', count = 3 }: SkeletonProps)
 
   return (
     <div className="animate-pulse">
-      <div className="bg-[var(--color-hover-background)] mb-8 rounded w-4/5 h-12" />
+      <div className="bg-[var(--color-hover-background)] mb-8 rounded h-12" />
       <div className="gap-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
         {Array.from({ length: count }).map((_, index) => (
           <div 

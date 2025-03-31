@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
 import { Editor } from '@tiptap/react';
-import './styles.css';
 
 interface LinkInputProps {
   editor: Editor;

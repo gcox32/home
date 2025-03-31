@@ -173,7 +173,7 @@ export default function EditBlogPostPage({ params }: { params: Promise<{ id: str
   }
 
   return (
-    <div className="mx-auto p-6 max-w-4xl">
+    <div className="bg-[var(--color-background-soft)] mx-auto my-2 p-6 border border-[var(--color-border-base)] rounded-lg max-w-7xl">
       <h1 className="mb-6 font-semibold text-foreground text-2xl">Edit Blog Post</h1>
       <form onSubmit={handleSubmit} className="flex flex-col gap-6">
         <CollapsibleSection title="Post Details">
@@ -288,14 +288,14 @@ export default function EditBlogPostPage({ params }: { params: Promise<{ id: str
           <button
             type="button"
             onClick={() => router.back()}
-            className="hover:bg-[var(--color-hover-background)] px-4 py-2 border border-[var(--color-border-base)] rounded text-[var(--color-foreground)] text-sm transition-colors cursor-pointer"
+            className="bg-[var(--color-background-secondary)] hover:bg-[var(--color-background-soft)] px-4 py-2 border border-[var(--color-border-base)] rounded text-[var(--color-foreground)] text-sm transition-colors cursor-pointer"
           >
             Cancel
           </button>
           <button
             type="submit"
             disabled={saving}
-            className="hover:bg-black/[.05] dark:hover:bg-white/[.06] disabled:opacity-50 px-4 py-2 border border-accent rounded hover:text-white text-sm transition-colors cursor-pointer disabled:cursor-not-allowed"
+            className="bg-[var(--color-background-secondary)] hover:bg-[var(--color-background-soft)] disabled:opacity-50 px-4 py-2 border border-[var(--color-border-base)] rounded text-[var(--color-foreground)] text-sm transition-colors cursor-pointer disabled:cursor-not-allowed"
           >
             {saving ? 'Saving...' : 'Save Changes'}
           </button>

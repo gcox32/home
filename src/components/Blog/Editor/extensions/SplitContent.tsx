@@ -1,7 +1,6 @@
 import { Node, mergeAttributes } from '@tiptap/core';
 import { ReactNodeViewRenderer } from '@tiptap/react';
 import { SplitContentView } from './SplitContentView';
-import './styles.css';
 
 export interface SplitContentOptions {
   HTMLAttributes: Record<string, string | number | boolean | null>;

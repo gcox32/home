@@ -22,7 +22,7 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
     async function fetchPost() {
       try {
         const matchingPost = await getBlogPostBySlug(resolvedParams.slug);
-        
+        console.log(matchingPost);
         if (!matchingPost) {
           notFound();
         }
@@ -91,23 +91,31 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
         </header>
 
         {post.featuredImage && (
-          <div className="relative mb-8 rounded-lg w-full aspect-[16/9] overflow-hidden">
-            <Image
-              src={post.featuredImage}
-              alt={post.title}
-              fill
-              priority
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
-              className="object-cover"
-            />
-          </div>
+          <>
+            <div className="relative mb-1 rounded-lg w-full aspect-[16/9] overflow-hidden">
+              <Image
+                src={post.featuredImage}
+                alt={post.title}
+                fill
+                priority
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
+                className="object-cover"
+              />
+
+            </div>
+            {post.featuredImageSource && (
+              <p className="mb-4 ml-2 text-foreground text-sm italic">
+                {post.featuredImageSource}
+              </p>
+            )}
+          </>
         )}
 
         <div
           className="[&>code]:bg-[var(--color-prose-code-bg)] [&>pre]:bg-[var(--color-prose-code-bg)] [&>blockquote]:border-[var(--color-prose-quote-borders)] max-w-none [&>*]:text-[var(--color-prose-text)] [&>a]:text-[var(--color-prose-links)] [&>blockquote]:text-[var(--color-prose-quotes)] [&>code]:text-[var(--color-prose-code)] [&>h1]:text-[var(--color-prose-headings)] [&>h2]:text-[var(--color-prose-headings)] [&>h3]:text-[var(--color-prose-headings)] [&>h4]:text-[var(--color-prose-headings)] [&>strong]:text-[var(--color-prose-bold)] prose"
           dangerouslySetInnerHTML={{ __html: post.content }}
         />
-        <SubscribeCallToAction source="blog_post" />
+        <SubscribeCallToAction source={post.slug} />
       </article>
     </div>
   );

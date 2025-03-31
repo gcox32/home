@@ -6,6 +6,7 @@ import { Pencil, Plus } from 'lucide-react';
 import DeleteButton from '@/components/Common/DeleteButton';
 import { listBlogPosts, deleteBlogPost } from '@/utils/blog';
 import { BlogPost } from '@/types';
+import Skeleton from '@/components/Common/Skeleton';
 
 export default function BlogManagementPage() {
   const [posts, setPosts] = useState<BlogPost[]>([]);
@@ -47,15 +48,8 @@ export default function BlogManagementPage() {
 
   if (loading) {
     return (
-      <div className="p-8">
-        <div className="animate-pulse">
-          <div className="bg-[var(--color-background-secondary)] mb-6 rounded w-1/4 h-8" />
-          <div className="space-y-4">
-            {[1, 2, 3].map((n) => (
-              <div key={n} className="bg-[var(--color-background-secondary)] rounded h-12" />
-            ))}
-          </div>
-        </div>
+      <div className="mx-auto p-8 max-w-7xl">
+        <Skeleton variant="list" count={3} />
       </div>
     );
   }

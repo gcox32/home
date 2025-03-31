@@ -124,7 +124,7 @@ export default function NewBlogPostPage() {
   };
 
   return (
-    <div className="mx-auto p-6 max-w-4xl">
+    <div className="mx-auto p-6 max-w-7xl">
       <h1 className="mb-6 font-semibold text-2xl">Create New Blog Post</h1>
       <form onSubmit={handleSubmit} className="flex flex-col gap-6">
         <CollapsibleSection title="Post Details">
@@ -138,7 +138,7 @@ export default function NewBlogPostPage() {
               onChange={handleChange}
               onBlur={generateSlug}
               required
-              className="bg-background px-3 py-2 border focus:border-accent border-border rounded-md focus:outline-none focus:ring-2 focus:ring-accent text-foreground"
+              className="bg-[var(--color-background)] px-3 py-2 border border-[var(--color-border-base)] rounded-md focus:outline-none focus:ring-[var(--color-accent)] focus:ring-2 text-[var(--color-foreground)]"
             />
           </div>
 
@@ -151,7 +151,7 @@ export default function NewBlogPostPage() {
               value={formData.slug}
               onChange={handleChange}
               required
-              className="bg-background px-3 py-2 border focus:border-accent border-border rounded-md focus:outline-none focus:ring-2 focus:ring-accent text-foreground"
+              className="bg-[var(--color-background)] px-3 py-2 border border-[var(--color-border-base)] rounded-md focus:outline-none focus:ring-[var(--color-accent)] focus:ring-2 text-[var(--color-foreground)]"
             />
           </div>
 
@@ -164,7 +164,7 @@ export default function NewBlogPostPage() {
               onChange={handleChange}
               required
               rows={3}
-              className="bg-background px-3 py-2 border focus:border-accent border-border rounded-md focus:outline-none focus:ring-2 focus:ring-accent text-foreground"
+              className="bg-[var(--color-background)] px-3 py-2 border border-[var(--color-border-base)] rounded-md focus:outline-none focus:ring-[var(--color-accent)] focus:ring-2 text-[var(--color-foreground)]"
             />
           </div>
 
@@ -176,7 +176,7 @@ export default function NewBlogPostPage() {
               value={formData.status}
               onChange={handleChange}
               required
-              className="bg-background px-3 py-2 border focus:border-accent border-border rounded-md focus:outline-none focus:ring-2 focus:ring-accent text-foreground"
+              className="bg-[var(--color-background)] px-3 py-2 border border-[var(--color-border-base)] rounded-md focus:outline-none focus:ring-[var(--color-accent)] focus:ring-2 text-[var(--color-foreground)]"
             >
               <option value="draft">Draft</option>
               <option value="published">Published</option>
@@ -217,7 +217,7 @@ export default function NewBlogPostPage() {
                 onChange={(e) => setTagInput(e.target.value)}
                 onKeyDown={handleAddTag}
                 placeholder="Type a tag and press Enter, Space, or Comma"
-                className="bg-background px-3 py-2 border focus:border-accent border-border rounded-md focus:outline-none focus:ring-2 focus:ring-accent text-foreground"
+                className="bg-[var(--color-background)] px-3 py-2 border border-[var(--color-border-base)] rounded-md focus:outline-none focus:ring-[var(--color-accent)] focus:ring-2 text-[var(--color-foreground)]"
               />
             </div>
           </div>

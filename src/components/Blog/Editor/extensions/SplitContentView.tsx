@@ -1,6 +1,5 @@
 import { NodeViewContent, NodeViewWrapper, NodeViewProps } from '@tiptap/react';
 import { Image as ImageIcon, Loader } from 'lucide-react';
-import './styles.css';
 import { useState } from 'react';
 import Image from 'next/image';
 

@@ -13,7 +13,6 @@ import { Editor as TipTapEditor } from '@tiptap/core';
 import { Node } from '@tiptap/core';
 import { Plugin } from 'prosemirror-state';
 import LinkInput from './LinkInput';
-import './styles.css';
 import {
   Bold,
   Italic,
@@ -156,8 +155,8 @@ export default function Editor({ value, onChange, blogId }: EditorProps) {
       <div className="flex flex-wrap gap-2 p-2 border-b">
         <button
           onClick={() => editor.chain().focus().toggleHeading({ level: 1 }).run()}
-          className={`p-2 rounded hover:bg-gray-200 ${
-            editor.isActive('heading', { level: 1 }) ? 'bg-gray-200' : ''
+          className={`p-2 rounded cursor-pointer hover:bg-[var(--hover-background-soft)] ${
+            editor.isActive('heading', { level: 1 }) ? 'bg-[var(--hover-background-intense)]' : ''
           }`}
           title="Heading 1"
           type="button"
@@ -166,8 +165,8 @@ export default function Editor({ value, onChange, blogId }: EditorProps) {
         </button>
         <button
           onClick={() => editor.chain().focus().toggleHeading({ level: 2 }).run()}
-          className={`p-2 rounded hover:bg-gray-200 ${
-            editor.isActive('heading', { level: 2 }) ? 'bg-gray-200' : ''
+          className={`p-2 rounded cursor-pointer hover:bg-[var(--hover-background-soft)] ${
+            editor.isActive('heading', { level: 2 }) ? 'bg-[var(--hover-background-intense)]' : ''
           }`}
           title="Heading 2"
           type="button"
@@ -176,8 +175,8 @@ export default function Editor({ value, onChange, blogId }: EditorProps) {
         </button>
         <button
           onClick={() => editor.chain().focus().toggleBold().run()}
-          className={`p-2 rounded hover:bg-gray-200 ${
-            editor.isActive('bold') ? 'bg-gray-200' : ''
+          className={`p-2 rounded cursor-pointer hover:bg-[var(--hover-background-soft)] ${
+            editor.isActive('bold') ? 'bg-[var(--hover-background-intense)]' : ''
           }`}
           title="Bold"
           type="button"
@@ -186,8 +185,8 @@ export default function Editor({ value, onChange, blogId }: EditorProps) {
         </button>
         <button
           onClick={() => editor.chain().focus().toggleItalic().run()}
-          className={`p-2 rounded hover:bg-gray-200 ${
-            editor.isActive('italic') ? 'bg-gray-200' : ''
+          className={`p-2 rounded cursor-pointer hover:bg-[var(--hover-background-soft)] ${
+            editor.isActive('italic') ? 'bg-[var(--hover-background-intense)]' : ''
           }`}
           title="Italic"
           type="button"
@@ -196,8 +195,8 @@ export default function Editor({ value, onChange, blogId }: EditorProps) {
         </button>
         <button
           onClick={() => editor.chain().focus().toggleUnderline().run()}
-          className={`p-2 rounded hover:bg-gray-200 ${
-            editor.isActive('underline') ? 'bg-gray-200' : ''
+          className={`p-2 rounded cursor-pointer hover:bg-[var(--hover-background-soft)] ${
+            editor.isActive('underline') ? 'bg-[var(--hover-background-intense)]' : ''
           }`}
           title="Underline"
           type="button"
@@ -206,8 +205,8 @@ export default function Editor({ value, onChange, blogId }: EditorProps) {
         </button>
         <button
           onClick={() => editor.chain().focus().toggleBulletList().run()}
-          className={`p-2 rounded hover:bg-gray-200 ${
-            editor.isActive('bulletList') ? 'bg-gray-200' : ''
+          className={`p-2 rounded cursor-pointer hover:bg-[var(--hover-background-soft)] ${
+            editor.isActive('bulletList') ? 'bg-[var(--hover-background-intense)]' : ''
           }`}
           title="Bullet List"
           type="button"
@@ -216,8 +215,8 @@ export default function Editor({ value, onChange, blogId }: EditorProps) {
         </button>
         <button
           onClick={() => editor.chain().focus().toggleOrderedList().run()}
-          className={`p-2 rounded hover:bg-gray-200 ${
-            editor.isActive('orderedList') ? 'bg-gray-200' : ''
+          className={`p-2 rounded cursor-pointer hover:bg-[var(--hover-background-soft)] ${
+            editor.isActive('orderedList') ? 'bg-[var(--hover-background-intense)]' : ''
           }`}
           title="Numbered List"
           type="button"
@@ -226,8 +225,8 @@ export default function Editor({ value, onChange, blogId }: EditorProps) {
         </button>
         <button
           onClick={() => editor.chain().focus().toggleBlockquote().run()}
-          className={`p-2 rounded hover:bg-gray-200 ${
-            editor.isActive('blockquote') ? 'bg-gray-200' : ''
+          className={`p-2 rounded cursor-pointer hover:bg-[var(--hover-background-soft)] ${
+            editor.isActive('blockquote') ? 'bg-[var(--hover-background-intense)]' : ''
           }`}
           title="Quote"
           type="button"
@@ -236,8 +235,8 @@ export default function Editor({ value, onChange, blogId }: EditorProps) {
         </button>
         <button
           onClick={() => editor.chain().focus().toggleCodeBlock().run()}
-          className={`p-2 rounded hover:bg-gray-200 ${
-            editor.isActive('codeBlock') ? 'bg-gray-200' : ''
+          className={`p-2 rounded cursor-pointer hover:bg-[var(--hover-background-soft)] ${
+            editor.isActive('codeBlock') ? 'bg-[var(--hover-background-intense)]' : ''
           }`}
           title="Code Block"
           type="button"
@@ -246,8 +245,8 @@ export default function Editor({ value, onChange, blogId }: EditorProps) {
         </button>
         <button
           onClick={addLink}
-          className={`p-2 rounded hover:bg-gray-200 ${
-            editor.isActive('link') ? 'bg-gray-200' : ''
+          className={`p-2 rounded cursor-pointer hover:bg-[var(--hover-background-soft)] ${
+            editor.isActive('link') ? 'bg-[var(--hover-background-intense)]' : ''
           }`}
           title="Add Link"
           type="button"
@@ -256,8 +255,8 @@ export default function Editor({ value, onChange, blogId }: EditorProps) {
         </button>
         <button
           onClick={() => editor.chain().focus().setSplitContent('image-left').run()}
-          className={`p-2 rounded hover:bg-gray-200 ${
-            editor.isActive('splitContent', { position: 'image-left' }) ? 'bg-gray-200' : ''
+          className={`p-2 rounded cursor-pointer hover:bg-[var(--hover-background-soft)] ${
+            editor.isActive('splitContent', { position: 'image-left' }) ? 'bg-[var(--hover-background-intense)]' : ''
           }`}
           title="Add Image Left Layout"
           type="button"
@@ -266,8 +265,8 @@ export default function Editor({ value, onChange, blogId }: EditorProps) {
         </button>
         <button
           onClick={() => editor.chain().focus().setSplitContent('image-right').run()}
-          className={`p-2 rounded hover:bg-gray-200 ${
-            editor.isActive('splitContent', { position: 'image-right' }) ? 'bg-gray-200' : ''
+          className={`p-2 rounded cursor-pointer hover:bg-[var(--hover-background-soft)] ${
+            editor.isActive('splitContent', { position: 'image-right' }) ? 'bg-[var(--hover-background-intense)]' : ''
           }`}
           title="Add Image Right Layout"
           type="button"
@@ -276,7 +275,7 @@ export default function Editor({ value, onChange, blogId }: EditorProps) {
         </button>
         <button
           onClick={() => editor.chain().focus().setDivider().run()}
-          className="hover:bg-gray-200 p-2 rounded"
+          className="hover:bg-[var(--hover-background-soft)] p-2 rounded"
           title="Add Divider"
           type="button"
         >
@@ -285,8 +284,8 @@ export default function Editor({ value, onChange, blogId }: EditorProps) {
         <div className="border-l h-6" />
         <button
           onClick={() => editor.chain().focus().setTextAlign('left').run()}
-          className={`p-2 rounded hover:bg-gray-200 ${
-            editor.isActive({ textAlign: 'left' }) ? 'bg-gray-200' : ''
+          className={`p-2 rounded cursor-pointer hover:bg-[var(--hover-background-soft)] ${
+            editor.isActive({ textAlign: 'left' }) ? 'bg-[var(--hover-background-intense)]' : ''
           }`}
           title="Align Left"
           type="button"
@@ -295,8 +294,8 @@ export default function Editor({ value, onChange, blogId }: EditorProps) {
         </button>
         <button
           onClick={() => editor.chain().focus().setTextAlign('center').run()}
-          className={`p-2 rounded hover:bg-gray-200 ${
-            editor.isActive({ textAlign: 'center' }) ? 'bg-gray-200' : ''
+          className={`p-2 rounded cursor-pointer hover:bg-[var(--hover-background-soft)] ${
+            editor.isActive({ textAlign: 'center' }) ? 'bg-[var(--hover-background-intense)]' : ''
           }`}
           title="Align Center"
           type="button"
@@ -305,8 +304,8 @@ export default function Editor({ value, onChange, blogId }: EditorProps) {
         </button>
         <button
           onClick={() => editor.chain().focus().setTextAlign('right').run()}
-          className={`p-2 rounded hover:bg-gray-200 ${
-            editor.isActive({ textAlign: 'right' }) ? 'bg-gray-200' : ''
+          className={`p-2 rounded cursor-pointer hover:bg-[var(--hover-background-soft)] ${
+            editor.isActive({ textAlign: 'right' }) ? 'bg-[var(--hover-background-intense)]' : ''
           }`}
           title="Align Right"
           type="button"
@@ -315,8 +314,8 @@ export default function Editor({ value, onChange, blogId }: EditorProps) {
         </button>
         <button
           onClick={() => editor.chain().focus().setTextAlign('justify').run()}
-          className={`p-2 rounded hover:bg-gray-200 ${
-            editor.isActive({ textAlign: 'justify' }) ? 'bg-gray-200' : ''
+          className={`p-2 rounded cursor-pointer hover:bg-[var(--hover-background-soft)] ${
+            editor.isActive({ textAlign: 'justify' }) ? 'bg-[var(--hover-background-intense)]' : ''
           }`}
           title="Justify"
           type="button"
@@ -326,7 +325,7 @@ export default function Editor({ value, onChange, blogId }: EditorProps) {
         <div className="border-l h-6" />
         <button
           onClick={() => editor.chain().focus().undo().run()}
-          className="hover:bg-gray-200 ml-auto p-2 rounded"
+          className="hover:bg-[var(--hover-background-soft)] ml-auto p-2 rounded cursor-pointer"
           title="Undo"
           type="button"
         >
@@ -334,7 +333,7 @@ export default function Editor({ value, onChange, blogId }: EditorProps) {
         </button>
         <button
           onClick={() => editor.chain().focus().redo().run()}
-          className="hover:bg-gray-200 p-2 rounded"
+          className="hover:bg-[var(--hover-background-soft)] p-2 rounded cursor-pointer"
           title="Redo"
           type="button"
         >
