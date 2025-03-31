@@ -83,7 +83,7 @@ export default function BlogManagementPage() {
               <th className="px-6 py-3 font-medium text-[var(--color-muted-foreground)] text-xs text-left uppercase tracking-wider">Title</th>
               <th className="px-6 py-3 font-medium text-[var(--color-muted-foreground)] text-xs text-left uppercase tracking-wider">Status</th>
               <th className="px-6 py-3 font-medium text-[var(--color-muted-foreground)] text-xs text-left uppercase tracking-wider">Published Date</th>
-              <th className="px-6 py-3 font-medium text-[var(--color-muted-foreground)] text-xs text-left uppercase tracking-wider">Actions</th>
+              <th className="px-6 py-3 font-medium text-[var(--color-muted-foreground)] text-xs text-center uppercase tracking-wider">Actions</th>
             </tr>
           </thead>
           <tbody className="divide-[var(--color-border-base)] divide-y">
@@ -99,7 +99,7 @@ export default function BlogManagementPage() {
                   </Link>
                 </td>
                 <td className="px-6 py-4">
-                  <span className={`inline-flex px-3 py-1 text-xs font-medium rounded-full
+                  <span className={`inline-flex py-1 text-xs font-medium rounded-full
                     ${post.status === 'published' ? 'bg-[var(--color-success-light)] text-[var(--color-success)]' : ''}
                     ${post.status === 'draft' ? 'bg-[var(--color-warning-light)] text-[var(--color-warning)]' : ''}
                   `}>
@@ -110,10 +110,10 @@ export default function BlogManagementPage() {
                   {new Date(post.publishDate).toLocaleDateString()}
                 </td>
                 <td className="px-6 py-4">
-                  <div className="flex items-center gap-3">
+                  <div className="flex justify-center items-center gap-3">
                     <Link
                       href={`/manage/blog/${post.id}/edit`}
-                      className="text-[var(--color-accent)] hover:text-[var(--color-accent-dark)]"
+                      className="hover:bg-[var(--color-hover-background)] p-2 rounded-full text-[var(--color-accent)] transition-colors hover:text-[var(--color-accent-dark)]"
                     >
                       <Pencil size={18} />
                     </Link>

@@ -27,7 +27,7 @@ export default function DeleteButton({
   return (
     <>
       <button
-        className={`hover:bg-[var(--color-hover-background)] p-2 rounded-full transition-colors text-[var(--color-muted-foreground)] hover:text-red-500 ${buttonClassName || ''}`}
+        className={`cursor-pointer hover:bg-[var(--color-hover-background)] p-2 rounded-full transition-colors text-[var(--color-muted-foreground)] hover:text-red-500 ${buttonClassName || ''}`}
         onClick={(e) => {
           e.stopPropagation();
           setIsConfirmOpen(true);
