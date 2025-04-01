@@ -290,7 +290,7 @@ export default function Editor({ value, onChange, blogId, slug, postDetailsExpan
         >
           <Minus size={20} />
         </button>
-        <div className="border-l h-6" />
+        <div className="opacity-50 my-auto border-l h-6" />
         <button
           onClick={() => editor.chain().focus().setTextAlign('left').run()}
           className={`p-2 rounded cursor-pointer hover:bg-[var(--hover-background-soft)] ${
@@ -331,7 +331,7 @@ export default function Editor({ value, onChange, blogId, slug, postDetailsExpan
         >
           <AlignJustify size={20} />
         </button>
-        <div className="border-l h-6" />
+        <div className="opacity-50 my-auto border-l h-6" />
         <button
           onClick={() => editor.chain().focus().undo().run()}
           className="hover:bg-[var(--hover-background-soft)] ml-auto p-2 rounded cursor-pointer"
