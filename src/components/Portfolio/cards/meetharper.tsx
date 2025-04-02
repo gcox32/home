@@ -3,10 +3,11 @@ import BasePortfolioCard from './BasePortfolioCard';
 export default function MeetHarper() {
 
     const title = 'MeetHarper.com';
-    const description = 'Providing a library of customized content for broadband marketers';
+    const description = 'A library of content we took from customized to customizable';
     const technologies = [
         'TypeScript', 'Vue.js', 'Go', 'MySQL', 'AWS', 'Docker',
     ];
+    const siteUrl = 'https://meetharper.com';
     const foregroundImage = 'https://assets.letmedemo.com/public/home/portfolio/harper-hero.png';
     const backgroundImage = 'https://assets.letmedemo.com/public/home/portfolio/harper-hero-color.png';
     const foregroundPosition = '85% 50%';
@@ -44,7 +45,7 @@ export default function MeetHarper() {
             title={title}
             description={description}
             technologies={technologies}
-            siteUrl={`https://meetharper.com`}
+            siteUrl={siteUrl}
             backgroundImage={backgroundImage}
             foregroundImage={foregroundImage}
             foregroundPosition={foregroundPosition}

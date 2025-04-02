@@ -32,9 +32,9 @@ export default function BasePortfolioCard({ title, description, children, techno
             )}
             <div className="relative">
                 <div className="flex justify-between items-start gap-4">
-                    <div>
+                    <div className="flex flex-col justify-center w-full text-center">
                         <h3 className="mb-2 font-semibold text-xl" style={{ color: textColor }}>{title}</h3>
-                        <p style={{ color: textColor }}>
+                        <p style={{ color: textColor }} className="mb-3 text-center">
                             {description}
                         </p>
                     </div>

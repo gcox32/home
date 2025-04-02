@@ -3,7 +3,7 @@ import BasePortfolioCard from './BasePortfolioCard';
 export default function FiberHomes() {
 
   const title = 'FiberHomes.com';
-  const description = 'Bringing fiber availability into the light';
+  const description = 'A platform I built to help you find homes with internet you can rely on';
 
   const technologies = [
     'Python', 'Django', 'Postgresql', 'AWS', 'Vanilla JS', 'CSS', 'OAuth', 'SendGrid'
