@@ -3,15 +3,19 @@
 import Link from 'next/link';
 
 export default function Home() {
-  const handleProjectsClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+  const portfolioImage = 'https://assets.letmedemo.com/public/home/images/severance-ui';
+  const projectsImage = 'https://assets.letmedemo.com/public/home/images/daddys-home';
+  const blogImage = 'https://assets.letmedemo.com/public/home/images/lamp-post';
+
+  const handleCardClick = (e: React.MouseEvent<HTMLAnchorElement>, destination: string) => {
     e.preventDefault();
     
     // Get the background div and change its background to the animated GIF
     const projectsCard = e.currentTarget;
-    projectsCard.style.backgroundImage = 'url(https://assets.letmedemo.com/public/home/images/daddys-home.gif)';
+    projectsCard.style.backgroundImage = projectsCard.style.backgroundImage.replace('.png', '.gif');
     
     setTimeout(() => {
-      window.location.href = '/projects';
+      window.location.href = destination;
     }, 2000);
   };
 
@@ -22,9 +26,10 @@ export default function Home() {
           {/* Portfolio Card */}
           <Link 
             href="/portfolio"
-            className="group relative border hover:border-[var(--color-border-hover)] border-[var(--color-border-base)] rounded-lg h-[300px] overflow-hidden transition-all"
+            onClick={(e) => handleCardClick(e, '/portfolio')}
+            className="group relative border-[var(--color-border-hover)] border-2 hover:border-[var(--color-border-solid)] rounded-lg h-[300px] overflow-hidden transition-all"
             style={{
-              backgroundImage: 'url(https://assets.letmedemo.com/public/home/images/swordfish.png)',
+              backgroundImage: `url(${portfolioImage}.png), url(${portfolioImage}.gif)`,
               backgroundSize: 'cover',
               backgroundPosition: 'center'
             }}
@@ -39,10 +44,10 @@ export default function Home() {
           {/* Projects Card */}
           <Link 
             href="/projects"
-            onClick={handleProjectsClick}
-            className="group relative border hover:border-[var(--color-border-hover)] border-[var(--color-border-base)] rounded-lg h-[300px] overflow-hidden transition-all"
+            onClick={(e) => handleCardClick(e, '/projects')}
+            className="group relative border-[var(--color-border-hover)] border-2 hover:border-[var(--color-border-solid)] rounded-lg h-[300px] overflow-hidden transition-all"
             style={{
-              backgroundImage: 'url(https://assets.letmedemo.com/public/home/images/daddys-home.png)',
+              backgroundImage: `url(${projectsImage}.png), url(${projectsImage}.gif)`,
               backgroundSize: 'cover',
               backgroundPosition: 'center'
             }}
@@ -57,9 +62,10 @@ export default function Home() {
           {/* Blog Card */}
           <Link 
             href="/blog"
-            className="group relative border hover:border-[var(--color-border-hover)] border-[var(--color-border-base)] rounded-lg h-[300px] overflow-hidden transition-all"
+            onClick={(e) => handleCardClick(e, '/blog')}
+            className="group relative border-[var(--color-border-hover)] border-2 hover:border-[var(--color-border-solid)] rounded-lg h-[300px] overflow-hidden transition-all"
             style={{
-              backgroundImage: 'url(https://assets.letmedemo.com/public/home/images/lamppost.png)',
+              backgroundImage: `url(${blogImage}.png), url(${blogImage}.gif)`,
               backgroundSize: 'cover',
               backgroundPosition: 'center'
             }}
