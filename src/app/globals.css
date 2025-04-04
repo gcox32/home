@@ -545,3 +545,32 @@ body,nav {
         background: linear-gradient(to right,transparent,#374151 20%,#374151 80%,transparent)
     }
 }
+
+.editor-content h1, .prose h1 {
+  font-size: 2.25em;
+  font-weight: 700;
+  margin-top: 0;
+  margin-bottom: 0.8888889em;
+  line-height: 1.1111111;
+}
+
+.editor-content h2, .prose h2 {
+  font-size: 1.5em;
+  font-weight: 700;
+  margin-top: 2em;
+  margin-bottom: 1em;
+  line-height: 1.3333333;
+}
+
+.editor-content code:not(pre code), .prose code:not(pre code) {
+  color: var(--color-prose-code);
+  background-color: var(--color-prose-code-bg);
+  padding: 0.2em 0.4em;
+  border-radius: 0.25em;
+  font-size: 0.875em;
+  /* font-family: var(--font-mono); */
+}
+
+.editor-content pre code, .prose pre code {
+  font-size: 0.875em;
+}

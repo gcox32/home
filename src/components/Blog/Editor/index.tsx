@@ -86,7 +86,7 @@ export default function Editor({ value, onChange, blogId, slug, postDetailsExpan
       StarterKit.configure({
         codeBlock: {
           HTMLAttributes: {
-            class: 'rounded-md bg-slate-900 p-5 font-mono text-slate-50 my-4 overflow-x-auto border border-slate-800 shadow-lg'
+            class: 'rounded-md bg-slate-900 p-5 font-mono text-slate-50 my-2 overflow-x-auto border border-slate-800 shadow-lg'
           }
         }
       }),
