@@ -579,3 +579,30 @@ body,nav {
 .editor-content pre code, .prose pre code {
   font-size: 0.875em;
 }
+
+.editor-content ul, .prose ul {
+  list-style-type: disc;
+  margin-top: 1.25em;
+  margin-bottom: 1.25em;
+  padding-left: 1.625em;
+}
+
+.editor-content ol, .prose ol {
+  list-style-type: decimal;
+  margin-top: 1.25em;
+  margin-bottom: 1.25em;
+  padding-left: 1.625em;
+}
+
+.editor-content li, .prose li {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+.editor-content ul > li, .prose ul > li {
+  padding-left: 0.375em;
+}
+
+.editor-content ol > li, .prose ol > li {
+  padding-left: 0.375em;
+}
