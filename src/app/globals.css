@@ -27,7 +27,7 @@
     --foreground: #171717;
     --muted-foreground: #666666;
     --nav-height: 65px;
-    --footer-height: 89px;
+    --footer-height: 98px;
     --text-white: color-mix(in oklab, #ededed 80%, transparent);
     --accent: #0070f3;
     --accent-dark: #0051b3;
