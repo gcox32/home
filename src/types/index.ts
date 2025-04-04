@@ -8,6 +8,8 @@ export interface BlogPost {
     featuredImage: string;
     featuredImageSource: string;
     publishDate: string;
+    createdAt: string;
+    updatedAt: string;
 }
 
 export interface BlogTag {

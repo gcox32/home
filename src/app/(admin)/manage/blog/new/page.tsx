@@ -41,7 +41,9 @@ export default function NewBlogPostPage() {
         featuredImage: formData.featuredImage,
         featuredImageSource: formData.featuredImageSource,
         status: formData.status,
-        publishDate: new Date().toISOString()
+        publishDate: new Date().toISOString(),
+        updatedAt: new Date().toISOString(),
+        createdAt: new Date().toISOString()
       });
 
       if (!newPost?.id) {

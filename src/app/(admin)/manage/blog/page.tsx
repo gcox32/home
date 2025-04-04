@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { Pencil, Plus } from 'lucide-react';
+import { Pencil, Plus, Eye } from 'lucide-react';
 import DeleteButton from '@/components/Common/DeleteButton';
 import { listBlogPosts, deleteBlogPost } from '@/utils/blog';
 import { BlogPost } from '@/types';
@@ -11,26 +11,44 @@ import Skeleton from '@/components/Common/Skeleton';
 export default function BlogManagementPage() {
   const [posts, setPosts] = useState<BlogPost[]>([]);
   const [loading, setLoading] = useState(true);
+  const [sortDirection, setSortDirection] = useState<'asc' | 'desc'>('desc');
+  const [sortField, setSortField] = useState<'publishDate' | 'updatedAt'>('publishDate');
 
   useEffect(() => {
     fetchPosts();
-  }, []);
+  }, [fetchPosts]);
 
   async function fetchPosts() {
     try {
       const allPosts = await listBlogPosts();
-      // Sort posts by publish date (newest first)
-      const sortedPosts = [...allPosts].sort((a, b) => {
-        const dateA = a.publishDate ? new Date(a.publishDate).getTime() : 0;
-        const dateB = b.publishDate ? new Date(b.publishDate).getTime() : 0;
-        return dateB - dateA;
-      });
-      setPosts(sortedPosts);
+      sortPosts(allPosts, sortField, sortDirection);
     } catch (error) {
       console.error('Error fetching blog posts:', error);
     } finally {
       setLoading(false);
     }
+  }
+
+  function sortPosts(
+    postsToSort: BlogPost[], 
+    field: 'publishDate' | 'updatedAt' = sortField, 
+    direction: 'asc' | 'desc' = sortDirection
+  ) {
+    const sortedPosts = [...postsToSort].sort((a, b) => {
+      const dateA = a[field] ? new Date(a[field]).getTime() : 0;
+      const dateB = b[field] ? new Date(b[field]).getTime() : 0;
+      return direction === 'desc' ? dateB - dateA : dateA - dateB;
+    });
+    setPosts(sortedPosts);
+  }
+
+  function toggleSort(field: 'publishDate' | 'updatedAt') {
+    const newDirection = field === sortField 
+      ? (sortDirection === 'desc' ? 'asc' : 'desc')
+      : 'desc';
+    setSortDirection(newDirection);
+    setSortField(field);
+    sortPosts(posts, field, newDirection);
   }
 
   async function handleDeletePost(id: string) {
@@ -80,34 +98,58 @@ export default function BlogManagementPage() {
         <table className="w-full border-collapse">
           <thead>
             <tr className="bg-[var(--color-background-secondary)]">
-              <th className="px-6 py-3 font-medium text-[var(--color-muted-foreground)] text-xs text-left uppercase tracking-wider">Title</th>
-              <th className="px-6 py-3 font-medium text-[var(--color-muted-foreground)] text-xs text-left uppercase tracking-wider">Status</th>
-              <th className="px-6 py-3 font-medium text-[var(--color-muted-foreground)] text-xs text-left uppercase tracking-wider">Published Date</th>
-              <th className="px-6 py-3 font-medium text-[var(--color-muted-foreground)] text-xs text-center uppercase tracking-wider">Actions</th>
+              <th className="px-6 py-3 font-medium text-[var(--color-muted-foreground)] text-xs text-left uppercase tracking-wider cursor-default">Title</th>
+              <th className="px-6 py-3 font-medium text-[var(--color-muted-foreground)] text-xs text-left uppercase tracking-wider cursor-default">Status</th>
+              <th className="px-6 py-3 font-medium text-[var(--color-muted-foreground)] text-xs text-left uppercase tracking-wider cursor-pointer">
+                <button 
+                  onClick={() => toggleSort('publishDate')}
+                  className="flex items-center gap-1 hover:text-[var(--color-foreground)] uppercase cursor-pointer"
+                >
+                  Published
+                  {sortField === 'publishDate' && (
+                    <span className="text-xs">
+                      {sortDirection === 'desc' ? '↓' : '↑'}
+                    </span>
+                  )}
+                </button>
+              </th>
+              <th className="px-6 py-3 font-medium text-[var(--color-muted-foreground)] text-xs text-left uppercase tracking-wider cursor-pointer">
+                <button 
+                  onClick={() => toggleSort('updatedAt')}
+                  className="flex items-center gap-1 hover:text-[var(--color-foreground)] uppercase cursor-pointer"
+                >
+                  Last Updated
+                  {sortField === 'updatedAt' && (
+                    <span className="text-xs">
+                      {sortDirection === 'desc' ? '↓' : '↑'}
+                    </span>
+                  )}
+                </button>
+              </th>
+              <th className="px-6 py-3 font-medium text-[var(--color-muted-foreground)] text-xs text-center uppercase tracking-wider cursor-default">Actions</th>
             </tr>
           </thead>
           <tbody className="divide-[var(--color-border-base)] divide-y">
             {posts.map((post) => (
               <tr key={post.id} className="hover:bg-[var(--color-hover-background)]">
                 <td className="px-6 py-4">
-                  <Link
-                    href={`/blog/${post.slug}`}
-                    className="text-[var(--color-accent)] hover:text-[var(--color-accent-dark)]"
-                    target="_blank"
-                  >
+                  <span className="cursor-default">
                     {post.title}
-                  </Link>
+                  </span>
                 </td>
                 <td className="px-6 py-4">
-                  <span className={`inline-flex py-1 text-xs font-medium rounded-full
+                  <span className={`inline-flex py-1 text-xs font-medium rounded-full cursor-default
                     ${post.status === 'published' ? 'bg-[var(--color-success-light)] text-[var(--color-success)]' : ''}
                     ${post.status === 'draft' ? 'bg-[var(--color-warning-light)] text-[var(--color-warning)]' : ''}
                   `}>
                     {post.status}
                   </span>
                 </td>
-                <td className="px-6 py-4 text-[var(--color-muted-foreground)] text-sm">
-                  {new Date(post.publishDate).toLocaleDateString()}
+                <td className="px-6 py-4 text-[var(--color-muted-foreground)] text-sm cursor-default">
+                  {new Date(post.publishDate).toLocaleString() !== 'Invalid Date' ? new Date(post.publishDate).toLocaleString().replace(',', '') : '--'}
+                </td>
+                <td className="px-6 py-4 text-[var(--color-muted-foreground)] text-sm cursor-default">
+                  {new Date(post.updatedAt).toLocaleString().replace(',', '')}
                 </td>
                 <td className="px-6 py-4">
                   <div className="flex justify-center items-center gap-3">
@@ -116,6 +158,13 @@ export default function BlogManagementPage() {
                       className="hover:bg-[var(--color-hover-background)] p-2 rounded-full text-[var(--color-accent)] transition-colors hover:text-[var(--color-accent-dark)]"
                     >
                       <Pencil size={18} />
+                    </Link>
+                    <Link
+                      href={`/blog/${post.slug}/preview`}
+                      target="_blank"
+                      className="hover:bg-[var(--color-hover-background)] p-2 rounded-full text-[var(--color-accent)] transition-colors hover:text-[var(--color-accent-dark)]"
+                    >
+                      <Eye size={18} />
                     </Link>
                     <DeleteButton
                       onDelete={() => handleDeletePost(post.id)}

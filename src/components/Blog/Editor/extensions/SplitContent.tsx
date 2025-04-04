@@ -1,4 +1,4 @@
-import { Node, mergeAttributes, Editor } from '@tiptap/core';
+import { Node, mergeAttributes } from '@tiptap/core';
 import { ReactNodeViewRenderer } from '@tiptap/react';
 import { SplitContentView } from './SplitContentView';
 
@@ -10,7 +10,7 @@ declare module '@tiptap/core' {
   interface Commands<ReturnType> {
     splitContent: {
       setSplitContent: (position: 'image-left' | 'image-right') => ReturnType;
-      updateSplitContentAttributes: (pos: number, attrs: Record<string, any>) => ReturnType;
+      updateSplitContentAttributes: (pos: number, attrs: Record<string, string | number | boolean | null>) => ReturnType;
     };
   }
 }
@@ -165,7 +165,7 @@ export const SplitContent = Node.create<SplitContentOptions>({
   },
 
   onCreate() {
-    this.editor.storage.splitContent.updateNodeAttributes = (pos: number, attrs: Record<string, any>) => {
+    this.editor.storage.splitContent.updateNodeAttributes = (pos: number, attrs: Record<string, string | number | boolean | null>) => {
       this.editor.view.dispatch(
         this.editor.view.state.tr.setNodeMarkup(pos, undefined, {
           ...this.editor.view.state.doc.nodeAt(pos)?.attrs,

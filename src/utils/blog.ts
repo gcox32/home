@@ -69,10 +69,13 @@ export async function listBlogPosts(status?: 'draft' | 'published' | 'archived')
 
 export async function createBlogPost(post: Omit<BlogPost, 'id'>): Promise<BlogPost | null> {
   const id = crypto.randomUUID();
+  const now = new Date().toISOString();
   const newPost: BlogPost = {
     ...post,
     id,
-    publishDate: post.publishDate || new Date().toISOString()
+    publishDate: post.status === 'published' ? now : '',
+    createdAt: now,
+    updatedAt: now
   };
 
   const params = {
@@ -94,8 +97,18 @@ export async function updateBlogPost(id: string, updates: Partial<BlogPost>): Pr
   const expressionAttributeNames: { [key: string]: string } = {};
   const expressionAttributeValues: { [key: string]: string | number | boolean | null } = {};
 
+  // Add updatedAt to the updates
+  const now = new Date().toISOString();
+  updates.updatedAt = now;
+
+  // Handle publishDate for status changes
+  const currentPost = await getBlogPost(id);
+  if (currentPost && updates.status === 'published' && currentPost.status !== 'published') {
+    updates.publishDate = now;
+  }
+
   Object.entries(updates).forEach(([key, value]) => {
-    if (key !== 'id') {
+    if (key !== 'id' && key !== 'createdAt') { // Prevent modification of createdAt
       updateExpressions.push(`#${key} = :${key}`);
       expressionAttributeNames[`#${key}`] = key;
       expressionAttributeValues[`:${key}`] = value;

@@ -9,7 +9,7 @@ export function SplitContentView({ node, getPos, editor }: NodeViewProps) {
   const isImageLeft = node.attrs.position === 'image-left';
   const hasImage = node.attrs.imageUrl;
 
-  const updateAttributes = (attrs: Record<string, any>) => {
+  const updateAttributes = (attrs: Record<string, string | number | boolean | null>) => {
     if (typeof getPos === 'function') {
       editor.commands.updateSplitContentAttributes(getPos(), attrs);
     }
