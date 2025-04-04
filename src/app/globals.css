@@ -546,6 +546,10 @@ body,nav {
     }
 }
 
+.editor-content p, .prose p {
+  min-height: 1.5rem;
+}
+
 .editor-content h1, .prose h1 {
   font-size: 2.25em;
   font-weight: 700;
