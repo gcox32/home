@@ -82,9 +82,9 @@ export function SplitContentView({ node, getPos, editor }: NodeViewProps) {
               alt={node.attrs.source || ""}
               title={node.attrs.source || ""}
               className="split-content-image"
-              fill
               sizes="(max-width: 768px) 100vw, 50vw"
-              style={{ objectFit: 'cover' }}
+              height={100}
+              width={100}
             />
             <div className="image-overlay">
               <span className="text-white text-sm">Click to replace image</span>
