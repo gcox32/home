@@ -3,11 +3,17 @@ import { Image as ImageIcon, Loader } from 'lucide-react';
 import { useState } from 'react';
 import Image from 'next/image';
 
-export function SplitContentView({ node, selected, editor }: NodeViewProps) {
+export function SplitContentView({ node, getPos, editor }: NodeViewProps) {
 
   const [isUploading, setIsUploading] = useState(false);
   const isImageLeft = node.attrs.position === 'image-left';
   const hasImage = node.attrs.imageUrl;
+
+  const updateAttributes = (attrs: Record<string, any>) => {
+    if (typeof getPos === 'function') {
+      editor.commands.updateSplitContentAttributes(getPos(), attrs);
+    }
+  };
 
   const handleImageClick = async () => {
     if (!editor) return;
@@ -33,6 +39,7 @@ export function SplitContentView({ node, selected, editor }: NodeViewProps) {
         });
 
         if (!response.ok) throw new Error('Failed to get upload URL');
+
         const { uploadUrl, publicUrl } = await response.json();
 
         const uploadResponse = await fetch(uploadUrl, {
@@ -45,7 +52,7 @@ export function SplitContentView({ node, selected, editor }: NodeViewProps) {
           throw new Error('Failed to upload image');
         }
 
-        editor.commands.updateAttributes('splitContent', {
+        updateAttributes({
           imageUrl: publicUrl,
           slug: node.attrs.slug || editor.storage.splitContent?.slug
         });
@@ -60,11 +67,9 @@ export function SplitContentView({ node, selected, editor }: NodeViewProps) {
   };
 
   const handleSourceChange = (e: React.FocusEvent<HTMLInputElement>) => {
-    if (editor) {
-      editor.commands.updateAttributes('splitContent', {
-        source: e.target.value || ''
-      });
-    }
+    updateAttributes({
+      source: e.target.value || ''
+    });
   };
 
   const ImageSection = () => (
@@ -114,7 +119,7 @@ export function SplitContentView({ node, selected, editor }: NodeViewProps) {
   return (
     <NodeViewWrapper className="split-content-wrapper">
       <div
-        className={`split-content ${selected ? 'selected' : ''} ${
+        className={`split-content ${getPos() === editor.view.state.selection?.from ? 'selected' : ''} ${
           isImageLeft ? 'image-left' : 'image-right'
         }`}
       >
