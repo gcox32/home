@@ -63,7 +63,7 @@ export default function EditBlogPostPage({ params }: { params: Promise<{ id: str
     fetchPost();
   }, [resolvedParams.id, router]);
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent, closeAfterSave: boolean = true) => {
     e.preventDefault();
     setSaving(true);
 
@@ -112,7 +112,12 @@ export default function EditBlogPostPage({ params }: { params: Promise<{ id: str
       });
 
       await Promise.all(tagPromises);
-      router.push('/manage/blog');
+      
+      if (closeAfterSave) {
+        router.push('/manage/blog');
+      } else {
+        setSaving(false);
+      }
     } catch (error) {
       console.error('Error updating blog post:', error);
       setSaving(false);
@@ -176,7 +181,7 @@ export default function EditBlogPostPage({ params }: { params: Promise<{ id: str
   return (
     <div className="bg-[var(--color-background-soft)] mx-auto my-2 p-6 border border-[var(--color-border-base)] rounded-lg max-w-7xl">
       <h1 className="mb-6 font-semibold text-foreground text-2xl">Edit Blog Post</h1>
-      <form onSubmit={handleSubmit} className="flex flex-col gap-6">
+      <form onSubmit={(e) => handleSubmit(e, true)} className="flex flex-col gap-6">
         <CollapsibleSection title="Post Details" onExpandedChange={setIsPostDetailsOpen}>
           <div className="flex flex-col gap-2">
             <label htmlFor="title" className="font-medium text-foreground text-sm">Title</label>
@@ -290,17 +295,25 @@ export default function EditBlogPostPage({ params }: { params: Promise<{ id: str
         <div className="flex justify-end gap-4 mt-6">
           <button
             type="button"
-            onClick={() => router.back()}
+            onClick={() => router.push('/manage/blog')}
             className="bg-[var(--color-background-secondary)] hover:bg-[var(--color-background-soft)] px-4 py-2 border border-[var(--color-border-base)] rounded text-[var(--color-foreground)] text-sm transition-colors cursor-pointer"
           >
             Cancel
           </button>
           <button
-            type="submit"
+            type="button"
+            onClick={(e) => handleSubmit(e, false)}
             disabled={saving}
             className="bg-[var(--color-background-secondary)] hover:bg-[var(--color-background-soft)] disabled:opacity-50 px-4 py-2 border border-[var(--color-border-base)] rounded text-[var(--color-foreground)] text-sm transition-colors cursor-pointer disabled:cursor-not-allowed"
           >
-            {saving ? 'Saving...' : 'Save Changes'}
+            {saving ? 'Saving...' : 'Save'}
+          </button>
+          <button
+            type="submit"
+            disabled={saving}
+            className="bg-[var(--color-accent)] disabled:opacity-50 px-4 py-2 rounded text-sm transition-colors text-[var(--color-accent-foreground)] hover:bg-[var(--color-accent-dark)] cursor-pointer disabled:cursor-not-allowed"
+          >
+            {saving ? 'Saving...' : 'Save & Close'}
           </button>
         </div>
       </form>

@@ -27,7 +27,7 @@ export default function NewBlogPostPage() {
   });
   const [isPostDetailsOpen, setIsPostDetailsOpen] = useState(true);
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent, closeAfterSave: boolean = true) => {
     e.preventDefault();
     setLoading(true);
 
@@ -72,10 +72,25 @@ export default function NewBlogPostPage() {
       });
 
       await Promise.all(tagPromises);
-      router.push('/manage/blog');
+      
+      if (closeAfterSave) {
+        router.push('/manage/blog');
+      } else {
+        setLoading(false);
+        // Reset form after successful creation if not closing
+        setFormData({
+          title: '',
+          slug: '',
+          excerpt: '',
+          content: '',
+          featuredImage: '',
+          featuredImageSource: '',
+          status: 'draft',
+          tags: []
+        });
+      }
     } catch (error) {
       console.error('Error creating blog post:', error);
-    } finally {
       setLoading(false);
     }
   };
@@ -129,7 +144,7 @@ export default function NewBlogPostPage() {
   return (
     <div className="mx-auto p-6 max-w-7xl">
       <h1 className="mb-6 font-semibold text-2xl">Create New Blog Post</h1>
-      <form onSubmit={handleSubmit} className="flex flex-col gap-6">
+      <form onSubmit={(e) => handleSubmit(e, true)} className="flex flex-col gap-6">
         <CollapsibleSection title="Post Details" defaultExpanded={true} onExpandedChange={setIsPostDetailsOpen}>
           <div className="flex flex-col gap-2">
             <label htmlFor="title" className="font-medium text-sm">Title</label>
@@ -241,17 +256,25 @@ export default function NewBlogPostPage() {
         <div className="flex justify-end gap-4 mt-6">
           <button
             type="button"
-            onClick={() => router.back()}
+            onClick={() => router.push('/manage/blog')}
             className="hover:bg-[var(--color-hover-background)] px-4 py-2 border border-[var(--color-border-base)] rounded-md text-[var(--color-foreground)] text-sm transition-colors cursor-pointer"
           >
             Cancel
+          </button>
+          <button
+            type="button"
+            onClick={(e) => handleSubmit(e, false)}
+            disabled={loading}
+            className="bg-[var(--color-background-secondary)] hover:bg-[var(--color-background-soft)] disabled:opacity-50 px-4 py-2 border border-[var(--color-border-base)] rounded text-[var(--color-foreground)] text-sm transition-colors cursor-pointer disabled:cursor-not-allowed"
+          >
+            {loading ? 'Creating...' : 'Create Post'}
           </button>
           <button
             type="submit"
             disabled={loading}
             className="bg-[var(--color-accent)] disabled:opacity-50 px-4 py-2 rounded-md text-sm transition-colors text-[var(--color-accent-foreground)] hover:bg-[var(--color-accent-dark)] cursor-pointer disabled:cursor-not-allowed"
           >
-            {loading ? 'Creating...' : 'Create Post'}
+            {loading ? 'Creating...' : 'Create & Close'}
           </button>
         </div>
       </form>

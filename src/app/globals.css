@@ -182,7 +182,8 @@ body,nav {
 .split-content .image-section {
     display: flex;
     flex-direction: column;
-    gap: .5rem
+    gap: .5rem; 
+    justify-content: center;
 }
 
 .split-content .source-input {
