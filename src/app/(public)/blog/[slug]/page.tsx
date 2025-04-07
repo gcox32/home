@@ -22,7 +22,7 @@ export async function generateMetadata({params}: {params: Promise<{ slug: string
     title: post.title,
     description: post.excerpt,
     openGraph: {
-      title: post.title,
+      title: `Grant | ${post.title}`,
       description: post.excerpt,
       type: 'article',
       publishedTime: post.publishDate,
@@ -59,7 +59,7 @@ export default async function BlogPostPage({ params }:  {params: Promise<{ slug:
   const tags = await getPostTags(matchingPost.id);
 
   return (
-    <div className="mx-auto px-6 py-12 max-w-7xl">
+    <div className="bg-[var(--color-background-soft)] mx-auto my-2 p-6 border border-[var(--color-border-base)] rounded-lg max-w-7xl">
       <article>
         <header className="mb-8">
           <h1 className="mb-4 font-bold text-foreground text-4xl">{matchingPost.title}</h1>

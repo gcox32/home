@@ -46,7 +46,7 @@ export default function PreviewBlogPost({ slug }: { slug: string }) {
   }
 
   return (
-    <div className="mx-auto px-6 py-12 max-w-7xl">
+    <div className="bg-[var(--color-background-soft)] mx-auto my-2 p-6 border border-[var(--color-border-base)] rounded-lg max-w-7xl">
       <article>
         <header className="mb-8">
           <h1 className="mb-4 font-bold text-foreground text-4xl">{post.title}</h1>
