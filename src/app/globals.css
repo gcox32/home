@@ -606,3 +606,24 @@ body,nav {
 .editor-content ol > li, .prose ol > li {
   padding-left: 0.375em;
 }
+
+/* Custom scrollbar styling */
+::-webkit-scrollbar {
+  width: 0px; /* Width of vertical scrollbar */
+  height: 0px; /* Height of horizontal scrollbar */
+}
+
+/* Optional: If you want a minimal scrollbar instead of completely hidden */
+::-webkit-scrollbar-thumb {
+  background: var(--color-border-base);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* For Firefox */
+* {
+  scrollbar-width: none;
+}
