@@ -16,7 +16,9 @@ export default function ReadingListForm({ item, onSubmit, onCancel }: ReadingLis
         author: '',
         status: 'to-be-read',
         description: '',
-        image: '',
+        url: '',
+        authorUrl: '',
+        imageSrc: '',
         genre: '',
         review: '',
         rating: 0,
@@ -32,7 +34,9 @@ export default function ReadingListForm({ item, onSubmit, onCancel }: ReadingLis
                 author: item.author,
                 status: item.status,
                 description: item.description,
-                image: item.image,
+                url: item.url,
+                authorUrl: item.authorUrl,
+                imageSrc: item.imageSrc,
                 genre: item.genre,
                 review: item.review,
                 rating: item.rating,
@@ -83,6 +87,30 @@ export default function ReadingListForm({ item, onSubmit, onCancel }: ReadingLis
             </div>
 
             <div className="flex flex-col gap-2">
+                <label htmlFor="url" className="font-medium text-sm">URL</label>
+                <input
+                    type="text"
+                    id="url"
+                    name="url"
+                    value={formData.url}
+                    onChange={handleChange}
+                    className="bg-[var(--color-background)] px-3 py-2 border border-[var(--color-border-base)] rounded-md focus:outline-none focus:ring-[var(--color-accent)] focus:ring-2"
+                />
+            </div>
+
+            <div className="flex flex-col gap-2">
+                <label htmlFor="imageSrc" className="font-medium text-sm">Image Source</label>
+                <input
+                    type="text"
+                    id="imageSrc"
+                    name="imageSrc"
+                    value={formData.imageSrc}
+                    onChange={handleChange}
+                    className="bg-[var(--color-background)] px-3 py-2 border border-[var(--color-border-base)] rounded-md focus:outline-none focus:ring-[var(--color-accent)] focus:ring-2"
+                />
+            </div>
+
+            <div className="flex flex-col gap-2">
                 <label htmlFor="author" className="font-medium text-sm">Author</label>
                 <input
                     type="text"
@@ -91,6 +119,18 @@ export default function ReadingListForm({ item, onSubmit, onCancel }: ReadingLis
                     value={formData.author}
                     onChange={handleChange}
                     required
+                    className="bg-[var(--color-background)] px-3 py-2 border border-[var(--color-border-base)] rounded-md focus:outline-none focus:ring-[var(--color-accent)] focus:ring-2"
+                />
+            </div>
+
+            <div className="flex flex-col gap-2">
+                <label htmlFor="authorUrl" className="font-medium text-sm">Author URL</label>
+                <input
+                    type="text"
+                    id="authorUrl"
+                    name="authorUrl"
+                    value={formData.authorUrl}
+                    onChange={handleChange}
                     className="bg-[var(--color-background)] px-3 py-2 border border-[var(--color-border-base)] rounded-md focus:outline-none focus:ring-[var(--color-accent)] focus:ring-2"
                 />
             </div>

@@ -46,10 +46,12 @@ export interface ReadingListItem {
     id: string;
     title: string;
     subtitle: string;
+    url: string;
     author: string;
+    authorUrl: string;
     status: 'read' | 'reading' | 'to-be-read';
     description: string;
-    image: string;
+    imageSrc: string;
     genre: string;
     review: string;
     rating: number; // 1-5

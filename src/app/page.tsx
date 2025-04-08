@@ -29,7 +29,18 @@ export default function HomePage() {
           <div className="dark:prose-invert prose">
             <h1 className="mb-4">Welcome.</h1>
             <p className="text-[var(--color-muted-foreground)] text-lg">
-              {`I'm Grant. Let me demonstrate.`}
+              {`I'm Grant and I'm a full stack web developer. While I do genuinely enjoy the craft of web development, 
+              I also enjoy a lot of other things: basketball, bank robbery movies, reading, piano, philosophy, when Ben Affleck says "I like incongruity" in The Accountant,
+              the first generation Pokemon games, portfolio construction, optimization problems, chess, math (not statistics), CS Lewis, allegory, Olympic weightlifting, 
+              gymnastics, swimming, and so on.`}
+            </p>
+            <p className="mt-6 text-[var(--color-muted-foreground)] text-lg">
+              {`I'm a big fan of the Memphis Grizzlies, eloquent speakers, and good thinkers. I struggle to balance articulating a point clearly and being verbose.
+              I'm currently working on writing more, jumping higher, and more purposefully maintaining my friendships.`}
+            </p>
+            <p className="mt-6 text-[var(--color-muted-foreground)] text-lg">
+              {`"Let me demo" is a phrase I've used casually to get my foot in the door. As is the case with movies and books, the "show me don't tell me" approach
+              often communicates the idea best.`}
             </p>
           </div>
         </div>
