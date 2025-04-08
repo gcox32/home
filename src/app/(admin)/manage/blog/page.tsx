@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import Link from 'next/link';
 import { Pencil, Plus, Eye } from 'lucide-react';
 import DeleteButton from '@/components/Common/DeleteButton';
@@ -14,11 +14,7 @@ export default function BlogManagementPage() {
   const [sortDirection, setSortDirection] = useState<'asc' | 'desc'>('desc');
   const [sortField, setSortField] = useState<'publishDate' | 'updatedAt'>('publishDate');
 
-  useEffect(() => {
-    fetchPosts();
-  }, [fetchPosts]);
-
-  async function fetchPosts() {
+  const fetchPosts = useCallback(async () => {
     try {
       const allPosts = await listBlogPosts();
       sortPosts(allPosts, sortField, sortDirection);
@@ -27,7 +23,11 @@ export default function BlogManagementPage() {
     } finally {
       setLoading(false);
     }
-  }
+  }, [sortField, sortDirection]);
+
+  useEffect(() => {
+    fetchPosts();
+  }, [fetchPosts]);
 
   function sortPosts(
     postsToSort: BlogPost[], 

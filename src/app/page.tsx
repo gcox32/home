@@ -1,8 +1,9 @@
 'use client';
 
 import Link from 'next/link';
+import ReadingListWidget from '@/components/ReadingList/ReadingListWidget';
 
-export default function Home() {
+export default function HomePage() {
   const portfolioImage = 'https://assets.letmedemo.com/public/home/images/severance-ui';
   const projectsImage = 'https://assets.letmedemo.com/public/home/images/daddys-home';
   const blogImage = 'https://assets.letmedemo.com/public/home/images/lamp-post';
@@ -20,8 +21,28 @@ export default function Home() {
   };
 
   return (
-    <div className="justify-items-center items-center gap-16 grid grid-rows-[20px_1fr_20px] p-8 sm:p-20 pb-20 font-[family-name:var(--font-geist-sans)] content-height">
-      <main className="flex flex-col items-center sm:items-start gap-[32px] row-start-2">
+    <div className="mx-auto px-4 py-8 max-w-7xl">
+      {/* Two-column section for widget */}
+      <div className="gap-8 grid grid-cols-1 lg:grid-cols-3 mb-12">
+        {/* Main content column */}
+        <div className="space-y-8 lg:col-span-2">
+          <div className="dark:prose-invert prose">
+            <h1 className="mb-4">Welcome.</h1>
+            <p className="text-[var(--color-muted-foreground)] text-lg">
+              {`I'm Grant. Let me demonstrate.`}
+            </p>
+          </div>
+        </div>
+
+        {/* Sidebar column */}
+        <div className="lg:col-span-1">
+          <ReadingListWidget />
+        </div>
+      </div>
+
+      {/* Existing cards - completely untouched */}
+      <div className="justify-items-center items-center gap-16 grid grid-rows-[20px_1fr_20px] p-8 sm:p-20 pb-20 font-[family-name:var(--font-geist-sans)] content-height">
+      <div className="flex flex-col items-center sm:items-start gap-[32px] row-start-2">
         <div className="gap-6 grid grid-cols-1 md:grid-cols-3 w-full max-w-7xl">
           {/* Portfolio Card */}
           <Link 
@@ -77,7 +98,8 @@ export default function Home() {
             </div>
           </Link>
         </div>
-      </main>
+        </div>
+      </div>
     </div>
   );
 }

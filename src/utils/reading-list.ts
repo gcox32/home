@@ -79,7 +79,7 @@ export async function updateReadingListItem(
 ): Promise<ReadingListItem | null> {
     const updateExpressions: string[] = [];
     const expressionAttributeNames: { [key: string]: string } = {};
-    const expressionAttributeValues: { [key: string]: any } = {};
+    const expressionAttributeValues: { [key: string]: string | number } = {};
 
     Object.entries(updates).forEach(([key, value]) => {
         updateExpressions.push(`#${key} = :${key}`);
