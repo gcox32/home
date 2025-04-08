@@ -14,6 +14,22 @@ export default function BlogManagementPage() {
   const [sortDirection, setSortDirection] = useState<'asc' | 'desc'>('desc');
   const [sortField, setSortField] = useState<'publishDate' | 'updatedAt'>('publishDate');
 
+  const sortPosts = useCallback(
+    (
+      postsToSort: BlogPost[],
+      field: 'publishDate' | 'updatedAt' = sortField,
+      direction: 'asc' | 'desc' = sortDirection
+    ) => {
+      const sortedPosts = [...postsToSort].sort((a, b) => {
+        const dateA = a[field] ? new Date(a[field]).getTime() : 0;
+        const dateB = b[field] ? new Date(b[field]).getTime() : 0;
+        return direction === 'desc' ? dateB - dateA : dateA - dateB;
+      });
+      setPosts(sortedPosts);
+    },
+    [sortField, sortDirection]
+  );
+
   const fetchPosts = useCallback(async () => {
     try {
       const allPosts = await listBlogPosts();
@@ -28,19 +44,6 @@ export default function BlogManagementPage() {
   useEffect(() => {
     fetchPosts();
   }, [fetchPosts]);
-
-  function sortPosts(
-    postsToSort: BlogPost[], 
-    field: 'publishDate' | 'updatedAt' = sortField, 
-    direction: 'asc' | 'desc' = sortDirection
-  ) {
-    const sortedPosts = [...postsToSort].sort((a, b) => {
-      const dateA = a[field] ? new Date(a[field]).getTime() : 0;
-      const dateB = b[field] ? new Date(b[field]).getTime() : 0;
-      return direction === 'desc' ? dateB - dateA : dateA - dateB;
-    });
-    setPosts(sortedPosts);
-  }
 
   function toggleSort(field: 'publishDate' | 'updatedAt') {
     const newDirection = field === sortField 
