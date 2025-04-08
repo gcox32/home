@@ -14,6 +14,7 @@ const nextConfig: NextConfig = {
     AUTH_PASSWORD: process.env.AUTH_PASSWORD,
     ADMIN_ACCESS_KEY_ID: process.env.ADMIN_ACCESS_KEY_ID,
     ADMIN_SECRET_ACCESS_KEY: process.env.ADMIN_SECRET_ACCESS_KEY,
+    SES_VERIFIED_EMAIL: process.env.SES_VERIFIED_EMAIL,
     BLOG_REGION: process.env.BLOG_REGION,
     BLOG_POST_TABLE: process.env.BLOG_POST_TABLE,
     BLOG_TAG_TABLE: process.env.BLOG_TAG_TABLE,

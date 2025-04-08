@@ -105,7 +105,7 @@ export default function HomePage() {
             <div className="absolute inset-0 bg-black/50 group-hover:bg-black/40 transition-colors" />
             <div className="z-10 relative flex flex-col justify-end p-6 h-full">
               <h2 className="mb-2 font-semibold text-white text-2xl">Blog</h2>
-              <p className="text-gray-200">Read my thoughts and tutorials</p>
+              <p className="text-gray-200">Read my thoughts, reviews, and tutorials</p>
             </div>
           </Link>
         </div>

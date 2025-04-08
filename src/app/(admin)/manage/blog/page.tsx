@@ -23,7 +23,7 @@ export default function BlogManagementPage() {
     } finally {
       setLoading(false);
     }
-  }, [sortField, sortDirection]);
+  }, [sortField, sortDirection, sortPosts]);
 
   useEffect(() => {
     fetchPosts();
