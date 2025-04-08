@@ -2,36 +2,44 @@
 
 import React from 'react';
 import { useSettings } from '@/contexts/SettingsContext';
+import Tooltip from '@/components/Common/Tooltip';
 
 export default function DarkModeToggle() {
   const { isDarkMode, toggleDarkMode } = useSettings();
 
   return (
-    <button
-      onClick={toggleDarkMode}
-      className="relative flex justify-center items-center hover:bg-[var(--color-hover-background)] p-2 rounded-full w-10 h-10 transition-colors cursor-pointer"
-      aria-label={isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'}
+    <Tooltip 
+      content="This site looks better in dark mode"
+      defaultVisible={!isDarkMode}
+      storageKey="dark-mode-tooltip-dismissed"
+      position="bottom"
     >
-      <div
-        className={`absolute transition-all duration-200 ease-in-out ${
-          isDarkMode 
-            ? 'scale-100 rotate-0 opacity-100' 
-            : 'scale-0 -rotate-45 opacity-0'
-        }`}
+      <button
+        onClick={toggleDarkMode}
+        className="relative flex justify-center items-center hover:bg-[var(--color-hover-background)] p-2 rounded-full w-10 h-10 transition-colors cursor-pointer"
+        aria-label={isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'}
       >
-        <SunIcon className="w-5 h-5" />
-      </div>
-      
-      <div
-        className={`absolute transition-all duration-200 ease-in-out ${
-          isDarkMode 
-            ? 'scale-0 rotate-45 opacity-0' 
-            : 'scale-100 rotate-0 opacity-100'
-        }`}
-      >
-        <MoonIcon className="w-5 h-5" />
-      </div>
-    </button>
+        <div
+          className={`absolute transition-all duration-200 ease-in-out ${
+            isDarkMode 
+              ? 'scale-100 rotate-0 opacity-100' 
+              : 'scale-0 -rotate-45 opacity-0'
+          }`}
+        >
+          <SunIcon className="w-5 h-5" />
+        </div>
+        
+        <div
+          className={`absolute transition-all duration-200 ease-in-out ${
+            isDarkMode 
+              ? 'scale-0 rotate-45 opacity-0' 
+              : 'scale-100 rotate-0 opacity-100'
+          }`}
+        >
+          <MoonIcon className="w-5 h-5" />
+        </div>
+      </button>
+    </Tooltip>
   );
 }
 
