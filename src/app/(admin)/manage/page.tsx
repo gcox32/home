@@ -23,6 +23,14 @@ export default function Management() {
           <h3 className="mb-2 font-semibold text-[var(--color-foreground)] text-xl">Subscribers</h3>
           <p className="text-[var(--color-muted-foreground)]">View and manage subscribers</p>
         </Link>
+
+        <Link 
+          href="/manage/reading-list"
+          className="bg-[var(--color-background-secondary)] hover:bg-[var(--color-hover-background)] p-6 rounded-lg transition-colors"
+        >
+          <h3 className="mb-2 font-semibold text-[var(--color-foreground)] text-xl">Reading List</h3>
+          <p className="text-[var(--color-muted-foreground)]">Manage your reading list and book reviews</p>
+        </Link>
       </div>
     </PageLayout>
   );

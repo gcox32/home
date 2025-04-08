@@ -19,6 +19,7 @@ const nextConfig: NextConfig = {
     BLOG_TAG_TABLE: process.env.BLOG_TAG_TABLE,
     BLOG_POST_TAG_TABLE: process.env.BLOG_POST_TAG_TABLE,
     BLOG_SUBSCRIBER_TABLE: process.env.BLOG_SUBSCRIBER_TABLE,
+    READING_LIST_TABLE: process.env.READING_LIST_TABLE,
   },
 };
 

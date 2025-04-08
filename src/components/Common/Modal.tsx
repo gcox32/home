@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react';
+import { X } from 'lucide-react';
 
 interface ModalProps {
   isOpen: boolean;
@@ -50,7 +51,7 @@ export default function Modal({ isOpen, onClose, title, children }: ModalProps) 
             onClick={onClose}
             className="hover:opacity-70 text-2xl leading-none transition-opacity cursor-pointer"
           >
-            ×
+            <X size={20} />
           </button>
         </div>
         <div className="p-4">

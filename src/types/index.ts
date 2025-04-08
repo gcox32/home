@@ -41,3 +41,21 @@ export interface BlogSubscriber {
     subscribedAt: string;
     source: string;
 }
+
+export interface ReadingListItem {
+    id: string;
+    title: string;
+    subtitle: string;
+    author: string;
+    status: 'read' | 'reading' | 'to-be-read';
+    description: string;
+    image: string;
+    genre: string;
+    review: string;
+    rating: number; // 1-5
+    startedAt: string;
+    finishedAt: string;
+    createdAt: string;
+    updatedAt: string;
+
+}
