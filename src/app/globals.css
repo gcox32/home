@@ -627,3 +627,27 @@ body,nav {
 * {
   scrollbar-width: none;
 }
+
+.editor-content blockquote, .prose blockquote {
+  font-style: italic;
+  font-size: 1.1em;
+  border-left: 4px solid var(--color-prose-quote-borders);
+  margin-top: 1.6em;
+  margin-bottom: 1.6em;
+  padding-left: 1em;
+}
+
+.editor-content blockquote p:first-of-type::before,
+.prose blockquote p:first-of-type::before {
+  content: open-quote;
+}
+
+.editor-content blockquote p:last-of-type::after,
+.prose blockquote p:last-of-type::after {
+  content: close-quote;
+}
+
+.editor-content blockquote p, .prose blockquote p {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
