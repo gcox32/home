@@ -1,62 +1,71 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import Rolodex from '@/components/Blog/Rolodex';
+import Link from 'next/link';
+import BlogPostCard from '@/components/Blog/BlogPostCard';
 import Skeleton from '@/components/Common/Skeleton';
-import { BlogTag } from '@/types';
-import { listTags } from '@/utils/blog';
+import { BlogPost } from '@/types';
+import { listBlogPosts } from '@/utils/blog';
 
-export default function Blog() {
-  const [tags, setTags] = useState<BlogTag[]>([]);
+export default function BlogPage() {
+  const [posts, setPosts] = useState<BlogPost[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    async function fetchTags() {
+    async function fetchPosts() {
       try {
-        const allTags = await listTags();
-        setTags(allTags);
+        const allPosts = await listBlogPosts('published');
+        // Sort by publish date, newest first
+        const sortedPosts = allPosts.sort((a, b) => 
+          new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime()
+        );
+        setPosts(sortedPosts);
       } catch (error) {
-        console.error('Error fetching tags:', error);
+        console.error('Error fetching blog posts:', error);
       } finally {
         setLoading(false);
       }
     }
 
-    fetchTags();
+    fetchPosts();
   }, []);
 
   if (loading) {
     return (
-      <div className="flex justify-center items-center h-[85vh]">
-        <Skeleton />
+      <div className="mx-auto px-6 py-12 max-w-7xl">
+        <div className="w-full">
+          <Skeleton />
+        </div>
       </div>
     );
   }
 
-  const tagEntries = tags.map((tag, index) => ({
-    tab: index.toString(),
-    label: tag.name,
-    tabSlot: index % 5,
-    destination: `/blog/tags/${tag.slug}`
-  }));
-
-  // Mock entries to fill in if we don't have enough tags
-  const mockEntries = [
-    { tab: 'A', label: 'Tumwater', tabSlot: 4, destination: '/blog/tags/01_File' },
-    { tab: 'B', label: 'Culpepper', tabSlot: 3, destination: '/blog/tags/Bellingham' },
-    { tab: 'C', label: 'Cairns', tabSlot: 2, destination: '/blog/tags/Cicero' },
-    { tab: 'D', label: 'Siena', tabSlot: 1, destination: '/blog/tags/Delacroix' },
-    { tab: 'E', label: 'Cold Harbor', tabSlot: 0, destination: '/blog/tags/Eternity' },
-  ];
-
-  // Combine real tags with mock data if needed
-  const entries = tagEntries.length >= 5 
-    ? tagEntries 
-    : [...tagEntries, ...mockEntries.slice(0, 5 - tagEntries.length)];
-
   return (
-    <div className="flex justify-center bg-transparent mx-auto max-w-7xl h-[75vh] overflow-y-hidden">
-      <Rolodex entries={entries} />
+    <div className="mx-auto px-6 py-12 max-w-7xl">
+      <div className="w-full">
+        <header className="mb-12">
+          <h1 className="mb-4 font-bold text-foreground text-3xl">
+            Blog
+          </h1>
+          <div className="flex items-center gap-4">
+            <p className="text-muted-foreground">
+              Browse through my latest thoughts and experiences
+            </p>
+            <Link 
+              href="/blog/tags"
+              className="bg-accent/10 hover:bg-accent px-3 py-1 rounded-full text-accent text-sm transition-colors hover:text-accent-foreground"
+            >
+              Browse Tags
+            </Link>
+          </div>
+        </header>
+
+        <div className="gap-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+          {posts.map((post) => (
+            <BlogPostCard key={post.id} post={post} />
+          ))}
+        </div>
+      </div>
     </div>
   );
 }
